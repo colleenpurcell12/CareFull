@@ -53,6 +53,16 @@ describe('/api/products', () => {
       })
   )
 
+  it('GET ONE / lists single product by id', () =>
+      request(app)
+        .get('/api/products/:productID')
+        
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.length(1)
+          expect(res.body.id).to.have.equal(req.params.productID)
+        })
+  )
   it('POST / creates a product', () =>
       request(app)
         .post('/api/products')
@@ -64,4 +74,5 @@ describe('/api/products', () => {
         })
         .expect(201)
   )
+
 })
