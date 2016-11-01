@@ -10,6 +10,7 @@ import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 
 import store from './store'
 import Root from './components/Root'
+import SignUp from './components/signup'
 
 render (
   <Provider store={store}>

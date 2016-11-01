@@ -30,8 +30,10 @@ const orders = require('express').Router()
         }) //close then promise
         .catch(next)
         //} 
-    });
-    .delete('/:orderID', (req, res, next) =>
+
+    })
+    .delete('/:productID', (req, res, next) =>
+
         Product.destroy({
             where: {id: req.params.orderID}
             })
