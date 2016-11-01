@@ -39,6 +39,7 @@ describe('Product', () => {
     })
 
   })
+  
     // it('has properties', () =>
     //   Product.create({
     //     name: ,
