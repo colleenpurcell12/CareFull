@@ -30,7 +30,7 @@ const products = require('express').Router()
         }) //close then promise
         .catch(next)
         //} 
-    });
+    })
     .delete('/:productID', (req, res, next) =>
         Product.destroy({
             where: {id: req.params.productID}
