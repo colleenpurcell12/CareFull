@@ -15,11 +15,7 @@ import SignUp from './components/signup'
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-     <Route path="/" component={} />
-     <Route path="products" component={AllProductsContainer} />
-     <Route path="products/:productsId" component={ProductContainer} >
-        <Route path="reviews" component={ReviewsContainer} />
-     </Route>
+     <Route path="/" component={AllProductsContainer} />
     </Router>
   </Provider>,
   document.getElementById('main')

@@ -1,4 +1,4 @@
-import fetchOneProduct from '../action-creator/product'
+import fetchOneProduct from '../action-creators/product'
 
 const initialState = {currentProduct: 
           {

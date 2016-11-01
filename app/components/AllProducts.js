@@ -9,19 +9,17 @@ export default class AllProducts extends Component {
     //puts it on the state and this makes it a prop
   }
 
-  render() {   
+  render() { 
+  console.log("this.props.products ",this.props.products )  
     return (
       <div>
         <h1>All Products</h1>
         {/* //image, caption, price, button add to cart */}
-        <ul>
-        {this.props.products.map( (product) =>{
-
-          <li> <span>{product.name} </span></li>
-          })
-        }
-
-        </ul>
+        <ul> {
+          this.props.products && this.props.products.map( (product) =>
+            <li> <span>{product.name} </span></li>
+          )
+        } </ul>
       </div>
     )
   }

@@ -1,6 +1,5 @@
 'use strict';
 
-import { RECEIVE_ALBUMS, RECEIVE_ALBUM } from '../constants';
 
 
 //synchronous
@@ -11,9 +10,9 @@ const getAllProductsAction = (products) => ({
 
 
 //asychronous
-export const fetchAllProducts = (productId) => {
+export const fetchAllProducts = () => 
   dispatch => 
-    fetch(`/api/products/${productId}`)
+    fetch(`/api/products/`)
       .then(res => res.json())
-      .then(album => dispatch(getAllProductsAction(products)));
-  }
+      .then(products => dispatch(getAllProductsAction(products)));
+  

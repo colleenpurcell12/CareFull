@@ -40,7 +40,7 @@ describe('/api/products', () => {
       .get(`/api/products/`)
       .expect(200)
       .then(res => {
-        expect(res.body).to.have.length(products.length)
+        expect(res.body.length).to.be.at.least(products.length)
         const [
           gotSnackPack, 
           gotPuzzles, 
