@@ -1,4 +1,4 @@
-const request = require('supertest-as-promised')
+ const request = require('supertest-as-promised')
 const {expect} = require('chai')
 const db = require('APP/db')
 const Product = require('APP/db/models/product')
@@ -9,19 +9,19 @@ describe('/api/products', () => {
           {
             name: 'Snack Package',
             description: 'this box is full of delicious snacks and funny movies',
-            quantity: 1,
+            inventory_quantity: 1,
             price: 11
           },
           {
             name: 'Puzzle box',
             description: 'this box is full of puzzles of various challenge levels',
-            quantity: 1,
+            inventory_quantity: 1,
             price: 12
           },
           {
             name: 'Coloring box',
             description: 'you will delight in the whimsical pictures you can create',
-            quantity: 1,
+            inventory_quantity: 1,
             price: 13
           }    
   ]
@@ -35,11 +35,9 @@ describe('/api/products', () => {
         product => Product.create(product)
       ))
   )
-
-
   it('GET / lists all products', () =>
     request(app)
-      .get(`/api/products`)
+      .get(`/api/products/`)
       .expect(200)
       .then(res => {
         expect(res.body).to.have.length(products.length)
@@ -47,32 +45,84 @@ describe('/api/products', () => {
           gotSnackPack, 
           gotPuzzles, 
           gotColoring ] = res.body
-        expect(gotSnackPack).to.contain(snackPackage)
-        expect(gotPuzzles).to.contain(puzzlePackage)
-        expect(gotColoring).to.contain(coloringPackage)
+          //console.log(res.body)
+        expect(gotSnackPack.id).to.exist
+        expect(gotSnackPack.name).to.exist
+
+        // expect(gotSnackPack).to.contains(snackPackage)
+        // expect(gotPuzzles).to.contains(puzzlePackage)
+        // expect(gotColoring).to.contains(coloringPackage)
       })
   )
 
+  let productOne
+  before(function () {
+
+          return Product.create({
+            name: 'The box',
+            description: 'you will delight',
+            inventory_quantity: 1,
+            price: 0
+          })
+          .then(function (p) {
+            productOne = p;
+          });
+        });
+
   it('GET ONE / lists single product by id', () =>
       request(app)
-        .get('/api/products/:productID')
-        
+        .get('/api/products/' + productOne.id)
         .expect(200)
         .then(res => {
-          expect(res.body).to.have.length(1)
-          expect(res.body.id).to.have.equal(req.params.productID)
+          //console.log(res.body)
+          expect(res.body.name).to.exist
+          expect(res.body.id).to.have.equal(productOne.id)
         })
   )
+
   it('POST / creates a product', () =>
       request(app)
         .post('/api/products')
         .send({
             name: 'Coloring box',
             description: 'you will delight in the whimsical pictures you can create',
-            quantity: 1,
+            inventory_quantity: 1,
             price: 13
         })
-        .expect(201)
+        
+        .then(res => {
+          //console.log(res.body)
+          expect(res.body).to.exist
+        })
+  )
+
+  let productTwo
+  before(function () {
+
+          return Product.create({
+            name: 'The box',
+            description: 'you will delight',
+            inventory_quantity: 1,
+            price: 0
+          })
+          .then(function (p) {
+            productTwo = p;
+          });
+        });
+
+  it('DELETE / destroys a product by id', () =>
+      request(app)
+        .delete('/api/products/' + productTwo.id)
+        .then(res => {
+          console.log(res.body)
+          expect(200)
+          //expect(res.body).to.exist
+        })
+        //.send({productTwo})
+        
+        // .then(res => {
+        //   expect(res.status).to.be.200
+        // })
   )
 
 })
