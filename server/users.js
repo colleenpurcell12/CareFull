@@ -2,12 +2,21 @@
 
 const epilogue = require('./epilogue')
 const db = require('APP/db')
+const User = require('APP/db/models/user')
 
-const customUserRoutes = require('express').Router() 
+const userRouter = require('express').Router() 
 
-// Custom routes go here.
+//Custom routes go here.
+userRouter.post('/', (req, res, next) => {
 
-module.exports = customUserRoutes
+	User.findOrCreate(req.body)
+	.then(user => {
+		res.send(user)
+	})
+	.catch(next)
+})
+
+module.exports = userRouter
 
 // Epilogue will automatically create standard RESTful routes
 const users = epilogue.resource({
