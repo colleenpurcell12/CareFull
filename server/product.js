@@ -1,4 +1,4 @@
-const Product = require('APP/db/models/product')
+const Product = require('../db/models/product')
 
 const products = require('express').Router()
 	//GET ALL
