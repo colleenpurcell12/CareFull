@@ -1,11 +1,11 @@
-import Albums from './Albums';
+import AllProducts from './AllProducts';
 import { connect } from 'react-redux';
 import fetchAllProducts from '../action-creator/products';
 
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-  	//LOAD ALL THE ALBUMS
+  	//LOAD ALL THE Products
     onLoadProducts (products) {
       dispatch( fetchAllProducts(products) )
     }
@@ -16,8 +16,12 @@ const mapStateToProps = ({ products }, ownProps) => {
   return { products };
 }
 
+//alternative
+// const mapStateToProps = ({ products }, ownProps) => {
+//   return { products: state.products }; 
+// }
 
-const ProductContainer = connect(
+const AllProductsContainer = connect(
 						  mapStateToProps,
 						  mapDispatchToProps  
 						)(Products);

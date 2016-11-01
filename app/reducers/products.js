@@ -1,6 +1,6 @@
-import getAllProductsAction from '../action-creator/products'
+import fetchAllProducts from '../action-creator/AllProducts'
 
-const initialState = {products: [
+const initialState = {currentProduct: [
           {
             name: 'Snack Package',
             description: 'this box is full of delicious snacks and funny movies',
@@ -21,17 +21,13 @@ const initialState = {products: [
           }    
   ]}
 
-
-
-
-
 const productsReducer = function(state = initialState, action) {
   switch(action.type) {
-  	case 'GET_ALL_PRODUCTS' :
-  	const { products } = state
-	    return Object.assign( {}, state, 
-	    	{ products: [  ...products , action.products] }
-	    	)
+    case 'GET_ALL_PRODUCTS' :
+    const { products } = state
+      return Object.assign( {}, state, 
+        { products: [  ...products , action.products] }
+        )
     default: return state
   }
 };

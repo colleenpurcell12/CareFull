@@ -3,6 +3,7 @@
 // const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const Order = require('APP/db/models/order')
 
 const Product = db.define('products', {
   name: {
@@ -24,12 +25,15 @@ const Product = db.define('products', {
   },
   category: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
-    allowNull: false
+    allowNull: true
   },
   photo: {
     type: Sequelize.STRING,
     defaultValue: '/default.svg'
   },
 })
+
+
+//Product.belongsToMany(Order, { through: OrderProduct }) 
 
 module.exports = Product
