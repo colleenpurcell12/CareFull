@@ -1,6 +1,6 @@
-import AllProducts from './AllProducts';
+import AllProducts from '../components/AllProducts';
 import { connect } from 'react-redux';
-import fetchAllProducts from '../action-creator/products';
+import { fetchAllProducts } from '../action-creators/products';
 
 
 const mapDispatchToProps = function (dispatch, ownProps) {
@@ -24,6 +24,6 @@ const mapStateToProps = ({ products }, ownProps) => {
 const AllProductsContainer = connect(
 						  mapStateToProps,
 						  mapDispatchToProps  
-						)(Products);
+						)(AllProducts);
 
 export default AllProductsContainer;
