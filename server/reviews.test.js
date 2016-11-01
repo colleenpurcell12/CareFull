@@ -2,6 +2,7 @@
 const {expect} = require('chai')
 const db = require('APP/db')
 const Review = require('APP/db/models/review')
+const Product = require('APP/db/models/product')
 const app = require('./start')
 
 describe('/api/reviews', () => {
@@ -9,17 +10,17 @@ describe('/api/reviews', () => {
           {
             subject: 'Great',
             body: 'this box is full of delicious snacks and funny movies',
-            productId: 1
+            // product_id: 1
           },
           {
             subject: 'Good',
             body: 'this box is full of delicious snacks and funny movies',
-            productId: 1
+            // product_id: 1
           },
           {
             subject: 'Bad',
             body: 'this box is full of delicious snacks and funny movies',
-            productId: 2
+            // product_id: 2
           }    
   ]
   const [Great, Good, Bad]
@@ -31,13 +32,22 @@ describe('/api/reviews', () => {
       .then(() => reviews.map(
         review => Review.create(review)
       ))
-  )
+      //.then(result => console.log(result))
+  )    
+
+  // before('make product', () =>
+  //   Product.create({
+
+  //   })
+  // )
+  
   it('GET / lists all reviews by productId', () =>
     request(app)
-      .get(`/api/reviews/1`)
+      .get('/api/reviews/1')
       .expect(200)
       .then(res => {
-        expect(res.body).to.have.length(2)
+        console.log(res.body)
+        expect(res.body).to.have.length(3)
         // const [
         //   Great,
         //   Good ] = res.body
