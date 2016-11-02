@@ -10,20 +10,20 @@ describe('/api/reviews', () => {
           {
             subject: 'Great',
             body: 'this box is full of delicious snacks and funny movies',
-            // product_id: 1
+            product_id: 1
           },
           {
             subject: 'Good',
             body: 'this box is full of delicious snacks and funny movies',
-            // product_id: 1
+            product_id: 1
           },
           {
             subject: 'Bad',
             body: 'this box is full of delicious snacks and funny movies',
-            // product_id: 2
+            product_id: 2
           }    
   ]
-  const [Great, Good, Bad]
+  const [great, good, bad]
     = reviews
 
   before('sync database & make reviews', () =>
@@ -32,8 +32,25 @@ describe('/api/reviews', () => {
       .then(() => reviews.map(
         review => Review.create(review)
       ))
+      //.then(() => console.log("na na na"))
       //.then(result => console.log(result))
-  )    
+  )
+
+  it('GET / lists all reviews by productId', () =>
+    request(app)
+      .get('/api/reviews/1')
+      .expect(200)
+      .then(res => {
+        console.log("res.body", res.body)
+        expect(res.body).to.have.length(3)
+        // const [
+        //   great,
+        //   good ] = res.body
+        //   //console.log(res.body)
+        // expect(gread.id).to.exist
+        // expect(good.subject).to.exist
+      })
+  )
 
   // before('make product', () =>
   //   Product.create({
@@ -41,21 +58,11 @@ describe('/api/reviews', () => {
   //   })
   // )
   
-  it('GET / lists all reviews by productId', () =>
-    request(app)
-      .get('/api/reviews/1')
-      .expect(200)
-      .then(res => {
-        console.log(res.body)
-        expect(res.body).to.have.length(3)
-        // const [
-        //   Great,
-        //   Good ] = res.body
-        //   //console.log(res.body)
-        // expect(Great.id).to.exist
-        // expect(Good.subject).to.exist
-      })
-  )
+  //setTimeout(() => {
+
+    
+
+  //}, 5000)
 
   // let productOne
   // before(function () {

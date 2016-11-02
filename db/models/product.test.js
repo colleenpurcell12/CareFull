@@ -17,7 +17,7 @@ describe('Product', () => {
 
   describe('validations', () => {
     let product;
-    beforeEach('test product', () => {
+    before('test product', () => {
       product = Product.build();
     })
 

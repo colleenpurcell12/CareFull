@@ -1,20 +1,16 @@
-const Review = require('../db/models/review')
+const { Review } = require('APP/db/models')
 
 const reviewRouter = require('express').Router()
 	//GET ALL by productId
     .get('/:productId', (req, res, next) =>
-        res.send([1,2, 3])
-        // Review.findAll({
-        //     // where: {
-        //     //     productId: req.params.productId
-        //     // }
-        // })
-        //     .then(reviews => {
-        //         console.log('reviews', reviews)
-        //         res.send(reviews)
-        //         }
-        //     )
-        //     .catch(next)
+        //res.send([1,2, 3])
+        Review.findAll()
+            .then(reviews => {
+                //console.log("hey hey hey")
+                res.send(reviews)
+                }
+            )
+            .catch(next)
 
     )
     //POST ONE 
