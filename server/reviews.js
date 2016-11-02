@@ -1,9 +1,11 @@
 const { Review } = require('APP/db/models')
+const { User } = require('APP/db/models')
 
 const reviewRouter = require('express').Router()
 	//GET ALL by productId
     .get('/:productId', (req, res, next) =>
         Review.findAll({
+            include: [{model: User, as: 'author'}],
             where: {
                 product_id: req.params.productId
             }
@@ -17,9 +19,10 @@ const reviewRouter = require('express').Router()
     )
     //POST ONE 
     .post('/', function(req,res,next){
+
         Review.create(req.body) //onSubmit should include productId & userId 
         .then(function(reviewCreated){
-            console.log("review Created", reviewCreated)
+            console.log("REVIEW CREATED", reviewCreated)
             res.status(201).send({ reviewCreated }) 
         }) 
         .catch(next)

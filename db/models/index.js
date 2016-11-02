@@ -10,6 +10,8 @@ const Review = require('./review')
 	//associations with the Product model
 	Product.hasMany(Review)
 	User.hasMany(Review)
+	Review.belongsTo(User, {as: 'author'}) 
+	//adding this to be able to include user name on the product page
 	// User.hasMany(Orders)
 	// Product.belongsToMany(Order)
 	// Order.belongsToMany(Product)
