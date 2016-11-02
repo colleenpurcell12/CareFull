@@ -12,29 +12,25 @@ const Product = require('APP/db/models/product')
 const Order = require('APP/db/models/order')
 
 //item in order
-const OrderProduct = db.define('OrderProduct', {
+const OrderProduct = db.define('order_product', {
 		//order product quantity, productId, price
 
 	price: {
 	    type: Sequelize.FLOAT,
-	    allowNull: false
 	},
 	quantity: {
 		type: Sequelize.INTEGER,
 		defaultValue: 0
 	},
-	// {
-	// 	hook: {
-	// 	    beforeUpdate: function() {
-	// 			if(!this.isCompleted){ //not sold yet, could "go on sale"
-	// 		    	Product.findById(productId)
-	// 		    	.then(product =>
-	// 		    		this.price= product.price
-	// 		    	)
-	// 	         }
-	// 	    }
- //  		}
-	// }
+}, {
+		hook: {
+		    beforeCreate: function() {
+					Product.findOne( {where: {id: this.product_id}})
+					.then( function(foundProduct) {
+						this.price = foundProduct.price
+					})
+		    }
+  		}
 })
 
 

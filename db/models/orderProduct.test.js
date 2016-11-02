@@ -24,26 +24,42 @@ describe('OrderProduct', () => {
   describe('validations', () => {
     let product;
     let order;
+    let orderProduct;
     beforeEach('test order', () => {
-      product = Product.build({
+      product = Product.create({
         name: 'Product1',
         description: 'A thing',
         price: 12.00
       });
-      order = Order.build({
+      order = Order.create({
         status: 'pending'
       });
+      // Promise.all([product, order])
+      // .then(function(results){
+      //   orderProduct = OrderProduct.create({
+      //     product_id: 1,
+      //     order_id: 1,
+      //     quantity: 100
+      //   })
+      // })
     })
 
     it("has a price based on product price", () => {
-      let order2 = Order.build({status: 'not a valid status'})
-      expect(order2.id).to.not.exist
+      console.log("ORDER PRODUCT", orderProduct)
+      expect(orderProduct.price).to.equal(product.price);
     })
 
-    it("has valid status type", () => {
-      expect(order.status).to.be.equal('pending')
+    // it("when the order is pending, price should update when product price changes", () => {
+    //   product.update({price: 25}).then(function(changedProduct) {
+    //     expect(orderProduct.price).to.equal(changedProduct.price);
+    //
+    //   })
+    // })
+    //
+    // it("when the order is completed, price no longer updates", () => {
+    //
+    // })
+
+
     })
-
-
-  })
 })
