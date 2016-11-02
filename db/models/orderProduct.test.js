@@ -28,6 +28,7 @@ describe('OrderProduct', () => {
     let product;
     let order;
     let orderProduct;
+    let testPrice;
     before('test order', () =>
       Promise.all([
         Product.create({
@@ -56,7 +57,6 @@ describe('OrderProduct', () => {
     })
 
     it("has a price based on product price", () => {
-      console.log("PRODUCT PRICE", product.price)
       expect(orderProduct.price).to.equal(product.price);
     })
 
@@ -65,15 +65,24 @@ describe('OrderProduct', () => {
         return found.update({price: 25})
       })
       .then(function(changedProduct) {
-        console.log("THE ORDER PRODUCT", orderProduct)
-        expect(orderProduct.price).to.equal(changedProduct.price);
+        testPrice = changedProduct.price
+        return OrderProduct.findOne(
+          {where:
+            {product_id: changedProduct.id,
+             order_id: order.id
+          }})
+        })
+        .then(function(updatedOP) {
+          console.log("UPDATED OP", updatedOP)
+          //Refresh the instance
+          return updatedOP.reload()
+      }).then(function(reloadedOP) {
+        expect(reloadedOP.price).to.equal(testPrice)
       })
     })
 
     it("when the order is completed, price no longer updates", () => {
 
     })
-
-
     })
 })

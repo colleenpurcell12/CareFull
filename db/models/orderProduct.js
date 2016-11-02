@@ -33,5 +33,4 @@ const OrderProduct = db.define('order_product', {
   	// 	}
 })
 
-
 module.exports = OrderProduct

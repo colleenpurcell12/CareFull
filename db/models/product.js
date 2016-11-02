@@ -3,6 +3,8 @@
 // const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const OrderProduct = require('./orderProduct')
+const Order = require('./order')
 
 const Product = db.define('products', {
   name: {
@@ -30,6 +32,29 @@ const Product = db.define('products', {
     type: Sequelize.STRING,
     defaultValue: '/default.svg'
   },
+}, {
+  hooks: {
+      afterUpdate : function(product){
+        //Find all OrderProducts with the product's id
+        return OrderProduct.findAll({where: {product_id: product.id}})
+        .then(function(res) {
+          //For each OrderProduct
+          res.map(function(orderProduct) {
+            //Find all orders
+            return Order.findAll({where: {id: orderProduct.order_id}})
+            .then(function(orders) {
+              //For each order
+              orders.map(function(order){
+                //If the order is pending, update OrderProduct's price
+                if(order.status === 'pending'){
+                  return orderProduct.update({price: product.price})
+                }
+              })
+            })
+          })
+        })
+      }
+  }
 })
 
 module.exports = Product
