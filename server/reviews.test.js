@@ -32,8 +32,6 @@ describe('/api/reviews', () => {
       .then(() => reviews.map(
         review => Review.create(review)
       ))
-      //.then(() => console.log("na na na"))
-      //.then(result => console.log(result))
   )
 
   it('GET / lists all reviews by productId', () =>
@@ -41,28 +39,14 @@ describe('/api/reviews', () => {
       .get('/api/reviews/1')
       .expect(200)
       .then(res => {
-        console.log("res.body", res.body)
-        expect(res.body).to.have.length(3)
-        // const [
-        //   great,
-        //   good ] = res.body
-        //   //console.log(res.body)
-        // expect(gread.id).to.exist
-        // expect(good.subject).to.exist
+        expect(res.body).to.have.length(2)
+        const [
+          great,
+          good ] = res.body
+        expect(great.id).to.exist
+        expect(good.subject).to.exist
       })
   )
-
-  // before('make product', () =>
-  //   Product.create({
-
-  //   })
-  // )
-  
-  //setTimeout(() => {
-
-    
-
-  //}, 5000)
 
   // let productOne
   // before(function () {

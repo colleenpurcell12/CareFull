@@ -3,10 +3,12 @@ const { Review } = require('APP/db/models')
 const reviewRouter = require('express').Router()
 	//GET ALL by productId
     .get('/:productId', (req, res, next) =>
-        //res.send([1,2, 3])
-        Review.findAll()
+        Review.findAll({
+            where: {
+                product_id: req.params.productId
+            }
+        })
             .then(reviews => {
-                //console.log("hey hey hey")
                 res.send(reviews)
                 }
             )
