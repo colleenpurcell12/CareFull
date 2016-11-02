@@ -5,6 +5,7 @@ import product from './product'
 
 
 const rootReducer = combineReducers({
+	auth: require('./auth').default,  
 	product,
 	products
 })
