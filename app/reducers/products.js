@@ -1,6 +1,6 @@
 import { fetchAllProducts } from '../action-creators/products'
 
-const initialState = [
+const initialState = [ //products array
           {
             name: 'Snack Package',
             description: 'this box is full of delicious snacks and funny movies',
@@ -24,7 +24,7 @@ const initialState = [
 const productsReducer = function(state = initialState, action) {
   switch(action.type) {
     case 'GET_ALL_PRODUCTS' :
-      return [  ...state , ...action.products]
+      return action.products
     default: return state
   }
 };
