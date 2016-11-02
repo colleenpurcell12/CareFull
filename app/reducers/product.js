@@ -11,11 +11,12 @@ const initialState =  //currentProduct
 
 
 const productReducer = function(state = initialState, action) {
-  console.log("ACTION GET ONE",action)
+  //console.log("ACTION GET ONE",action)
   switch(action.type) {
 
   	case 'GET_ONE_PRODUCT' :
     return action.currentProduct //state is currentProduct but it's replaced not appended to products list
+    
     default: return state
   }
 };

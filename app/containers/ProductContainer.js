@@ -20,8 +20,8 @@ const mapDispatchToProps = function (dispatch, ownProps) {
   }
 }
 
-const mapStateToProps = ({ currentProduct }, ownProps) => {
-  return { currentProduct }; 
+const mapStateToProps = ({ currentProduct, reviews }, ownProps) => {
+  return { currentProduct, reviews}; 
 }
 
 const ProductContainer = connect(

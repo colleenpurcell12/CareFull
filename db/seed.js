@@ -1,10 +1,14 @@
 const db = require('APP/db')
 
 const seedUsers = () => db.Promise.map([
-  {name: 'so many', email: 'god@example.com', password: '1234'},
+  {name: 'Joe Biden', email: 'joe@biden.com', password: '1234'},
   {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
 ], user => db.model('users').create(user))
 
+const seedReviews = () => db.Promise.map([
+  {subject: 'Enjoyed it', body: 'wanna take it behind the bleachers', product_id: 1, author_id: 2 },
+  {subject: 'Amazing', body: 'really good', product_id: 1, author_id: 1 },
+], review => db.model('reviews').create(review))
 
 const seedProducts = () => db.Promise.map([
   			{
@@ -35,6 +39,9 @@ db.didSync
 
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
+
+  .then(seedReviews)
+  .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
 
   .catch(error => console.error(error))    
   .finally(() => db.close())

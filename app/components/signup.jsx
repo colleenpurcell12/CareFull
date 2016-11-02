@@ -19,6 +19,7 @@ export default class Signup extends Component {
 	render() {
 		return (
 			<div>
+				<h2>Sign Up</h2>
 				<form onSubmit={this.handleSubmit}>
 				<input type="text" placeholder="Name" name="name" />
 				<input type="text" placeholder="Email" name="email" />
