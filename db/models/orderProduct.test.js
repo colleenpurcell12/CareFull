@@ -54,6 +54,7 @@ describe('OrderProduct', () => {
       })
     )
     after('destroy all in table', () => {
+      //TODO This
     })
 
     it("has a price based on product price", () => {
@@ -82,7 +83,7 @@ describe('OrderProduct', () => {
     })
 
     it("when the order is completed, price no longer updates", () => {
-
+      //TODO Update Order to "completed", update price again
     })
     })
 })
