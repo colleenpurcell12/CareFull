@@ -8,11 +8,11 @@ const reviewRouter = require('express').Router()
                 product_id: req.params.productId
             }
         })
-            .then(reviews => {
-                res.send(reviews)
-                }
-            )
-            .catch(next)
+        .then(reviews => {
+            res.send(reviews)
+            }
+        )
+        .catch(next)
 
     )
     //POST ONE 
