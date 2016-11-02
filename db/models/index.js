@@ -7,11 +7,14 @@
 const User = require('./user')
 const Product = require('./product')
 const Review = require('./review')
+const Order = require('./order.js')
+const OrderProducts = require('./orderProduct.js')
+
 	//associations with the Product model
 	Product.hasMany(Review)
 	User.hasMany(Review)
 	// User.hasMany(Orders)
-	// Product.belongsToMany(Order)
-	// Order.belongsToMany(Product)
+	Product.belongsToMany(Order, {through: OrderProducts})
+	Order.belongsToMany(Product, {through: OrderProducts})
 
-module.exports = { User, Product, Review }
+module.exports = { User, Product, Review, OrderProducts }

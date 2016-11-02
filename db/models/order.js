@@ -13,13 +13,15 @@ const Product = require('APP/db/models/product')
 //item in order
 const Order = db.define('order', {
 	status: { //returned, shipped, order, or in cart
-	    type: Sequelize.STRING,
+	    type: Sequelize.ENUM('pending', 'completed'),
+			defaultValue: 'pending',
 	    allowNull: false
 	}
+	//TODO Add Auth Session
 })
 
 //Order.belongsTo(Session);
 
-//Product.belongsToMany(Order, { through: OrderProduct }) 
+//Product.belongsToMany(Order, { through: OrderProduct })
 
 module.exports = Order

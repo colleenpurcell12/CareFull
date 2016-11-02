@@ -19,20 +19,9 @@ const OrderProduct = db.define('OrderProduct', {
 	    type: Sequelize.FLOAT,
 	    allowNull: false
 	},
-	productId: {
-		type: Sequelize.STRING,
-		allowNull: false
-	},
 	quantity: {
 		type: Sequelize.INTEGER,
 		defaultValue: 0
-	},
-	//order belongs to many products, through orderProduct and vis versa
-	isCompleted: {
-		type: Sequelize.BOOLEAN,
-		allowNull: false
-	}
-
 	},
 	// {
 	// 	hook: {
@@ -46,9 +35,7 @@ const OrderProduct = db.define('OrderProduct', {
 	// 	    }
  //  		}
 	// }
-}
+})
 
 
-module.exports = Order
-
-
+module.exports = OrderProduct
