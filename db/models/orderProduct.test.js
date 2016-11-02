@@ -5,9 +5,12 @@ const OrderProduct = require('./orderProduct')
 const Product = require('./product')
 const Order = require('./order')
 const {expect} = require('chai')
+const Promise = require('bluebird')
 
 describe('OrderProduct', () => {
-  before('wait for the db', () => db.didSync)
+  before('wait for the db', () => db.didSync
+  .then(() => Product.destroy({ where: {}})))
+
 
   describe('definition', () => {
 
@@ -25,40 +28,51 @@ describe('OrderProduct', () => {
     let product;
     let order;
     let orderProduct;
-    beforeEach('test order', () => {
-      product = Product.create({
-        name: 'Product1',
-        description: 'A thing',
-        price: 12.00
-      });
-      order = Order.create({
-        status: 'pending'
-      });
-      // Promise.all([product, order])
-      // .then(function(results){
-      //   orderProduct = OrderProduct.create({
-      //     product_id: 1,
-      //     order_id: 1,
-      //     quantity: 100
-      //   })
-      // })
+    before('test order', () =>
+      Promise.all([
+        Product.create({
+          name: 'Product1',
+          description: 'A thing',
+          price: 12.00
+        }),
+        Order.create({
+          status: 'pending'
+        })])
+      .spread(function(prod, ord){
+        product = prod
+        order = ord
+        return order.addProduct(product, {quantity: 100, price: product.price})
+      }).then( function() {
+        return OrderProduct.findOne({where:
+          {product_id: product.id,
+           order_id: order.id
+          }})
+        .then(function(res) {
+          orderProduct = res;
+        })
+      })
+    )
+    after('destroy all in table', () => {
     })
 
     it("has a price based on product price", () => {
-      console.log("ORDER PRODUCT", orderProduct)
+      console.log("PRODUCT PRICE", product.price)
       expect(orderProduct.price).to.equal(product.price);
     })
 
-    // it("when the order is pending, price should update when product price changes", () => {
-    //   product.update({price: 25}).then(function(changedProduct) {
-    //     expect(orderProduct.price).to.equal(changedProduct.price);
-    //
-    //   })
-    // })
-    //
-    // it("when the order is completed, price no longer updates", () => {
-    //
-    // })
+    it("when the order is pending, price should update when product price changes", () => {
+      Product.findById(1).then(function(found) {
+        return found.update({price: 25})
+      })
+      .then(function(changedProduct) {
+        console.log("THE ORDER PRODUCT", orderProduct)
+        expect(orderProduct.price).to.equal(changedProduct.price);
+      })
+    })
+
+    it("when the order is completed, price no longer updates", () => {
+
+    })
 
 
     })

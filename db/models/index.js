@@ -13,8 +13,8 @@ const OrderProducts = require('./orderProduct.js')
 	//associations with the Product model
 	Product.hasMany(Review)
 	User.hasMany(Review)
-	// User.hasMany(Orders)
+	User.hasMany(Order)
 	Product.belongsToMany(Order, {through: OrderProducts})
 	Order.belongsToMany(Product, {through: OrderProducts})
 
-module.exports = { User, Product, Review, OrderProducts }
+module.exports = { User, Product, Review }

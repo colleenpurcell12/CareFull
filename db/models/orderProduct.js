@@ -23,14 +23,14 @@ const OrderProduct = db.define('order_product', {
 		defaultValue: 0
 	},
 }, {
-		hook: {
-		    beforeCreate: function() {
-					Product.findOne( {where: {id: this.product_id}})
-					.then( function(foundProduct) {
-						this.price = foundProduct.price
-					})
-		    }
-  		}
+		// hook: {
+		//     beforeCreate: function() {
+		// 			Product.findOne( {where: {id: this.product_id}})
+		// 			.then( function(foundProduct) {
+		// 				this.price = foundProduct.price
+		// 			})
+		//     }
+  	// 	}
 })
 
 
