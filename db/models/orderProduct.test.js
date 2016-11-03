@@ -70,7 +70,7 @@ describe('OrderProduct', () => {
              order_id: order.id
           }})
         })
-        .delay(500).then(function(updatedOP) {
+        .delay(10).then(function(updatedOP) {
           //Refresh the instance
           return updatedOP.reload()
       }).then(function(reloadedOP) {
