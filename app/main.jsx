@@ -10,7 +10,6 @@ import fetchOneProduct from './action-creators/product';
 
 //import ReviewsContainer from './containers/ReviewsContainer';
 //onEnter={fetch/
-import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 
 import Root from './components/Root'
 import SignUp from './components/signup'
