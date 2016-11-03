@@ -5,25 +5,19 @@ import { fetchAllProducts } from '../action-creators/products';
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-  	//LOAD ALL THE Products
-    onLoadProducts (products) {
-      dispatch( fetchAllProducts(products) )
+    onLoadAllProducts (products) {
+      dispatch( fetchAllProducts(products) ) //doesn't actually take a parameter in func def
     }
   }
 }
 
 const mapStateToProps = ({ products }, ownProps) => {
-  return { products };
+  return { products }; //or { products: state.products }; 
 }
-
-//alternative
-// const mapStateToProps = ({ products }, ownProps) => {
-//   return { products: state.products }; 
-// }
 
 const AllProductsContainer = connect(
 						  mapStateToProps,
 						  mapDispatchToProps  
-						)(AllProducts);
+						)(AllProducts); //component name
 
 export default AllProductsContainer;

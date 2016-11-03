@@ -8,6 +8,8 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./product'))
+  .use('/reviews', require('./reviews'))
+
 
 // Send along any errors
 api.use((err, req, res, next) => {
