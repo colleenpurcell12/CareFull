@@ -70,12 +70,12 @@ describe('OrderProduct', () => {
              order_id: order.id
           }})
         })
-        .then(function(updatedOP) {
+        .delay(500).then(function(updatedOP) {
           //Refresh the instance
           return updatedOP.reload()
       }).then(function(reloadedOP) {
         expect(reloadedOP.price).to.equal(product.price)
-      })
+      }) 
     })
 
     it("when the order is completed, price no longer updates", () => {
