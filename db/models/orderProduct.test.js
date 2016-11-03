@@ -62,28 +62,48 @@ describe('OrderProduct', () => {
     })
 
     it("when the order is pending, price should update when product price changes", () => {
-      Product.findById(1).then(function(found) {
-        return found.update({price: 25})
-      })
+       return product.update({price: 25})
       .then(function(changedProduct) {
-        testPrice = changedProduct.price
         return OrderProduct.findOne(
           {where:
-            {product_id: changedProduct.id,
+            {product_id: product.id,
              order_id: order.id
           }})
         })
         .then(function(updatedOP) {
-          console.log("UPDATED OP", updatedOP)
           //Refresh the instance
           return updatedOP.reload()
       }).then(function(reloadedOP) {
-        expect(reloadedOP.price).to.equal(testPrice)
+        expect(reloadedOP.price).to.equal(product.price)
       })
     })
 
     it("when the order is completed, price no longer updates", () => {
       //TODO Update Order to "completed", update price again
+      return order.update({
+        status: "completed"
+      })
+      .then(function(updatedOrder) {
+        return product.update({
+          price: 14.00
+        })
+      })
+      .then(function(updatedPrice) {
+        return OrderProduct.findOne({
+          where: {
+            product_id: product.id,
+            order_id: order.id
+          }
+        })
+      })
+      .then(function(OP) {
+        return OP.reload()
+      })
+      .then(function(reloadedOP) {
+        expect(reloadedOP.price).to.not.equal(product.price)
+      })
     })
-    })
+
+  })
+
 })

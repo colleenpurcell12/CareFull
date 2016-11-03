@@ -1,6 +1,8 @@
+// Must have title, description, price, and inventory quantity
+// Must belong to at least one category
+// If there is no photo, there must be a placeholder photo used
 'use strict'
 
-// const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 const OrderProduct = require('./orderProduct')
@@ -26,7 +28,7 @@ const Product = db.define('products', {
   },
   category: {
     type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: true
+    allowNull: true //may need to change to false
   },
   photo: {
     type: Sequelize.STRING,
