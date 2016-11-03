@@ -1,21 +1,25 @@
 'use strict'
 import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
+import {connect, Provider} from 'react-redux'
+import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 
+import store from './store'
 import AllProductsContainer from './containers/AllProductsContainer';
 import ProductContainer from './containers/ProductContainer';
-
 import fetchOneProduct from './action-creators/product';
+import fetchReviews from './action-creators/review';
 
 //import ReviewsContainer from './containers/ReviewsContainer';
 //onEnter={fetch/
-
+  
 import Root from './components/Root'
-import SignUp from './components/signup'
-import {connect, Provider} from 'react-redux'
-import store from './store'
 import Login from './components/Login'
+import Signup from './components/signup'
+import Cart from './components/Cart'
+import Order from './components/Order'
+
+
 import WhoAmI from './components/WhoAmI'
 
 const Main = connect(
@@ -29,25 +33,27 @@ const Main = connect(
 )
 
 function onProductEnter (nextRouterState) {
-  console.log("HERE IN onProductEnter")
-  store.dispatch( fetchOneProduct(nextRouterState.params.productId) );
+  store.dispatch( fetchOneProduct(nextRouterState.params.productId) );  //puts current product on the props
+  store.dispatch( fetchReviews(nextRouterState.params.productId) );  //puts reviews on the props of the Product component
 }
-
-
 
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
 
-     <Route path="/" >
-     	  <IndexRedirect to="products" />
-     	  <Route path="products" component={AllProductsContainer}/>
-      	<Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
-     </Route>
+     <Route path="/" component={Root}>
+      <IndexRedirect to="products" />
+      <Route path="products" component={AllProductsContainer}/>
+        <Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
+        <Route path="login" component={Login} />
+        <Route path="signup" component={Signup} />
+        <Route path="cart" component={Cart} />
+        <Route path="order" component={Order} />
+      </Route>
 
     </Router>
-  </Provider>,
+  </Provider>
+
+  ,
   document.getElementById('main')
 )
-
-
