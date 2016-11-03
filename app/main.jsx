@@ -52,5 +52,5 @@ render (
   </Provider>
 
   ,
-  document.getElementById('main')
+  document.getElementById('app')
 )

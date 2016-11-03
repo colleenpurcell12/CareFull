@@ -13,14 +13,20 @@ export default class Product extends Component {
     //console.log("this.props.currentProduct ",this.props.currentProduct ) 
     //console.log("CHECK PASSING his.props.reviews ", this.props.reviews )    
     return (
-      <div>
+      <div className='row'>
+        <div className='col-md-12 well'>
         <h2>Product Details</h2>
         
         <h3>{this.props.currentProduct &&this.props.currentProduct.name}</h3>
+
+        <img src='sample.jpg'></img>
+
+        <h4>What's Inside? </h4>
         <p>{this.props.currentProduct &&this.props.currentProduct.description}</p>
         <p>Price: ${this.props.currentProduct && this.props.currentProduct.price}</p>
         {/* //image, caption, price, button add to cart */}
         <Reviews reviews={this.props.reviews} productId= {this.props.currentProduct.id}/>
+        </div>
       </div>
     )
   }
