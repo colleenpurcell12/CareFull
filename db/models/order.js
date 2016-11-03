@@ -9,6 +9,7 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 const Product = require('APP/db/models/product')
+// const OrderProduct = require('./orderProduct')
 
 //item in order
 const Order = db.define('orders', {
@@ -19,7 +20,30 @@ const Order = db.define('orders', {
 	//TODO Add Auth Session
 })
 
+// Order.getCart = function(userId) {
+// 	return Order.findOne({
+// 		where: {
+// 			status: 'pending',
+// 			user_id: userId
+// 		}
+// 	})
+// 	.then(function(foundOrder) {
+// 		if(!foundOrder) return Order.create({user_id: userId})
+// 		else return foundOrder
+// 	})
+// 	.then(function(foundOrder) {
+// 		return OrderProduct.findAll({
+// 			where: {order_id: foundOrder.id}
+// 		},
+// 		{
+// 			include: [{model: Product}]
+// 		})
+// 	})
+// }
+
 //Order.belongsTo(Session);
 
 
 module.exports = Order
+
+

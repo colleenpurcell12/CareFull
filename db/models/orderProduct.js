@@ -23,4 +23,24 @@ const OrderProduct = db.define('order_product', {
 	},
 })
 
+OrderProduct.getCart = function(userId) {
+	return Order.findOne({
+		where: {
+			status: 'pending',
+			user_id: userId
+		}
+	})
+	.then(function(foundOrder) {
+		if(!foundOrder) return Order.create({user_id: userId})
+		else return foundOrder
+	})
+	.then(function(foundOrder) {
+		return OrderProduct.findAll({
+			where: {order_id: foundOrder.id}, 
+			// include: [{model: Product}] how does this work? 
+			}
+		)
+	})
+}
+
 module.exports = OrderProduct
