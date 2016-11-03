@@ -13,7 +13,7 @@ export default class Signup extends Component {
 			email: event.target.email.value,
 			password: event.target.password.value
 		}
-		console.log(user)
+		// console.log(user)
 	}
 
 	render() {

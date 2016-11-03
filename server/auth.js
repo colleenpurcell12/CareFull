@@ -125,9 +125,13 @@ auth.post('/:strategy/login', (req, res, next) =>
     successRedirect: '/'
   })(req, res, next)
 )
+// where does req.session.userId = user.id; go??
+
 
 auth.post('/logout', (req, res, next) => {
   req.logout()
+  // session destroyed
+  req.session = null;
   res.redirect('/api/auth/whoami')
 })
 
