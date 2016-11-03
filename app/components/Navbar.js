@@ -43,6 +43,7 @@ export class Navbar extends Component {
               <li>
                 <Link to="/order" activeClassName="active">Order History</Link>
               </li>
+            {/*whoami component should go here to show username and logout*/}
           </ul>
           </div>
         </div>

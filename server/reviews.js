@@ -22,7 +22,6 @@ const reviewRouter = require('express').Router()
 
         Review.create(req.body) //onSubmit should include productId & userId 
         .then(function(reviewCreated){
-            console.log("REVIEW CREATED", reviewCreated)
             res.status(201).send({ reviewCreated }) 
         }) 
         .catch(next)

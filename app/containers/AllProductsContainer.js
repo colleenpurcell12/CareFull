@@ -1,4 +1,5 @@
 import AllProducts from '../components/AllProducts';
+import AllProductsFilter from '../components/AllProductsFilter';
 import { connect } from 'react-redux';
 import { fetchAllProducts } from '../action-creators/products';
 
@@ -18,6 +19,6 @@ const mapStateToProps = ({ products }, ownProps) => {
 const AllProductsContainer = connect(
 						  mapStateToProps,
 						  mapDispatchToProps  
-						)(AllProducts); //component name
+						)(AllProductsFilter(AllProducts)); //component name
 
 export default AllProductsContainer;
