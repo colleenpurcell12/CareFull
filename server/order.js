@@ -1,5 +1,6 @@
 const Order = require('../db/models/order')
 const OrderProduct = require('../db/models/orderProduct')
+const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
@@ -47,18 +48,23 @@ const orders = require('express').Router()
     )
     //Cart routes
         //onEnter route at main route, loads cart at every page 
-    .get('/:userId/cart', (req, res, next) => 
-         OrderProduct.getCart(req.params.userId)
+    .get('/cart', (req, res, next) => 
+         OrderProduct.getCart(req.user)
         .then(function(foundOrder) {
+            console.log("found order", foundOrder[0].id)
             return OrderProduct.findAll({
-                where: {order_id: foundOrder.id}, 
-                // include: [{model: Product}] how does this work? 
+                where: {order_id: foundOrder[0].id}, 
+                //include: [Product] 
                 }
-        )
+            )
+        })
         .then(function(foundProductsInOrder) {
+            return Product.findById()
+        })
+        .then(function(foundProductsInOrder) {
+            console.log("found products", foundProductsInOrder)
             res.send(foundProductsInOrder)
         })
-    })
         .catch(next)
 
     )
@@ -76,9 +82,9 @@ const orders = require('express').Router()
         .catch(next)
     )
 
-    .post('/:userId/cart/', (req, res, next) =>
-        OrderProduct.getCart(req.params.userId)
-        .then(function(foundOrder) {  //req,body is product
+    .post('/cart', (req, res, next) =>
+        OrderProduct.getCart(req.user)
+        .then(function(foundOrder) {  //req,body is product 
             return foundOrder.addProduct(req.body, {price: req.body.price})
         })
         .then(function(itemAddedToCart){
