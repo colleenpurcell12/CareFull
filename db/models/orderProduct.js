@@ -23,18 +23,18 @@ const OrderProduct = db.define('order_product', {
 	},
 })
 
-OrderProduct.getCart = function(userId) {
-	return Order.findOrCreate({
-		where: {
-			status: 'pending',
-			user_id: userId
-		}
-	})
+// OrderProduct.getCart = function(userId) {
+// 	return Order.findOrCreate({
+// 		where: {
+// 			status: 'pending',
+// 			user_id: userId.id
+// 		}
+// 	})
 	// .then(function(foundOrder) {
 	// 	if(!foundOrder) return Order.create({user_id: userId})
 	// 	else return foundOrder
 	// })
-}
+//}
 
 module.exports = OrderProduct
 

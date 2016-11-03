@@ -2,19 +2,36 @@
 const {expect} = require('chai')
 const db = require('APP/db')
 const Order = require('APP/db/models/order')
+const User = require('APP/db/models/user')
+
 const Product = require('APP/db/models/product')
 const app = require('./start')
 
-describe('/api/orders', () => {
 
+const alice = {
+  username: 'alice@secrets.org',
+  password: '12345'
+}
+
+describe('/api/cart', () => {
+
+  const agent = request.agent(app)
   before('sync database & make reviews', () =>
     db.didSync
       .then(() => Order.destroy({where:{}}))
+      .then(() =>
+        User.create(
+          {email: alice.username,
+          password: alice.password
+        }))
+      .then(() => agent
+        .post('/api/auth/local/login') 
+        .send(alice))
   )
-
+ 
   it('GET / lists all products by cart', () =>
     request(app)
-      .get('/api/orders/1/cart')
+      .get('/api/cart')
       .expect(200)
       .then(res => {
         expect(res.body).to.exist
