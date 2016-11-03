@@ -5,50 +5,22 @@
 
 'use strict'
 
-// const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 const Product = require('APP/db/models/product')
 const Order = require('APP/db/models/order')
 
-//item in order
-const OrderProduct = db.define('OrderProduct', {
-		//order product quantity, productId, price
+//product in order
+const OrderProduct = db.define('order_product', {
+		//price, quantity, product_id, order_id
 
 	price: {
 	    type: Sequelize.FLOAT,
-	    allowNull: false
-	},
-	productId: {
-		type: Sequelize.STRING,
-		allowNull: false
 	},
 	quantity: {
 		type: Sequelize.INTEGER,
-		defaultValue: 0
+		defaultValue: 1
 	},
-	//order belongs to many products, through orderProduct and vis versa
-	isCompleted: {
-		type: Sequelize.BOOLEAN,
-		allowNull: false
-	}
+})
 
-	},
-	// {
-	// 	hook: {
-	// 	    beforeUpdate: function() {
-	// 			if(!this.isCompleted){ //not sold yet, could "go on sale"
-	// 		    	Product.findById(productId)
-	// 		    	.then(product =>
-	// 		    		this.price= product.price
-	// 		    	)
-	// 	         }
-	// 	    }
- //  		}
-	// }
-}
-
-
-module.exports = Order
-
-
+module.exports = OrderProduct

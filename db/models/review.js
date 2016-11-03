@@ -1,6 +1,8 @@
+// All reviews must belong to a product
+// All reviews must belong to a user
+// All reviews must be at least X characters
 'use strict'
 
-// const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
@@ -18,6 +20,10 @@ const Review = db.define('reviews', {
         msg: "Body must be atleast 3 characters in length"
       }
     }
+  },
+  rating: { //5 star rating
+    type: Sequelize.INTEGER,
+    validate: {max: 5}
   }
 })
 
