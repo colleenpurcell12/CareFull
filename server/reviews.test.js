@@ -6,20 +6,24 @@ const Product = require('APP/db/models/product')
 const app = require('./start')
 
 describe('/api/reviews', () => {
+
   const reviews = [
     {
       subject: 'Great',
       body: 'this box is full of delicious snacks and funny movies',
+      rating: 4,
       product_id: 1
     },
     {
       subject: 'Good',
       body: 'this box is full of delicious snacks and funny movies',
+      rating: 5,
       product_id: 1
     },
     {
       subject: 'Bad',
       body: 'this box is full of delicious snacks and funny movies',
+      rating: 1,
       product_id: 2
     }    
   ]
@@ -39,6 +43,7 @@ describe('/api/reviews', () => {
       .get('/api/reviews/1')
       .expect(200)
       .then(res => {
+        console.log('request for reviews returns ',res.body)
         expect(res.body).to.have.length(2)
         const [
           great,
@@ -55,7 +60,7 @@ describe('/api/reviews', () => {
           subject: 'delicious',
           body: 'wonderful box',
           product_id: 1,
-          user_id: 1
+          author_id: 1
       })
       .then(res => {
         expect(res.body).to.exist
