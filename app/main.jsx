@@ -10,6 +10,9 @@ import ProductContainer from './containers/ProductContainer';
 import fetchOneProduct from './action-creators/product';
 import fetchReviews from './action-creators/review';
 
+//import ReviewsContainer from './containers/ReviewsContainer';
+//onEnter={fetch/
+  
 import Root from './components/Root'
 import Login from './components/Login'
 import Signup from './components/signup'
