@@ -1,6 +1,9 @@
 {
   "name": "carefull",
   "version": "0.0.1",
+  "engines": {
+    "node": "7.0.0"
+  },
   "description": "A happy little skeleton.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +11,7 @@
     "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
-    "start": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
+    "start": "bin/setup && nodemon server/start.js",
     "seed": "node db/seed.js"
   },
   "repository": {
@@ -42,6 +45,7 @@
     "express": "^4.14.0",
     "jQuery": "^1.7.4",
     "jquery": "^3.1.1",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",
