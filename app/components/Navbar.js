@@ -31,12 +31,26 @@ export default class Navbar extends Component {
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Boxes <span className="caret"></span></a>
 
-              <ul className="dropdown-menu">
-                <li><a href="#">box type 1</a></li>
-                <li><a href="#">box type 2</a></li>
-                <li><a href="#">box type 3</a></li>
-                <li role="separator" className="divider"></li>
-                <li><a href="#">separated section</a></li>
+
+                <li>  
+                  <Link to="/login" activeClassName="active">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup" activeClassName="active">
+                    Sign Up
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cart" activeClassName="active">
+                    <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  
+                      Cart
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/order" activeClassName="active">Order History</Link>
+                </li>
               </ul>
             </li>
               <li>
@@ -59,6 +73,7 @@ export default class Navbar extends Component {
       </div>
     </nav>
     </div>
+
     )
   }
 }
