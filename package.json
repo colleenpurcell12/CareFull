@@ -8,7 +8,7 @@
     "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
-    "start": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
+    "start": "node_modules/.bin/check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "seed": "node db/seed.js"
   },
   "repository": {
@@ -72,5 +72,8 @@
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3"
+  },
+  "engines": {
+    "node": "7.0.0"
   }
 }
