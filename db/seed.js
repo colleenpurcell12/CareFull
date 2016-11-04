@@ -6,8 +6,8 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedReviews = () => db.Promise.map([
-  {subject: 'Enjoyed it', body: 'wanna take it behind the bleachers', product_id: 1, author_id: 2 },
-  {subject: 'Amazing', body: 'really good', product_id: 1, author_id: 1 },
+  {subject: 'Enjoyed it', body: 'wanna take it behind the bleachers', rating: 4, product_id: 1, author_id: 2 },
+  {subject: 'Amazing', body: 'really good', rating: 4, product_id: 1, author_id: 1 },
 ], review => db.model('reviews').create(review))
 
 const seedProducts = () => db.Promise.map([

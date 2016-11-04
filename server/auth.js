@@ -73,7 +73,7 @@ OAuth.setupStrategy({
 })
 
 // Other passport configuration:
-
+//non-oauth
 passport.serializeUser((user, done) => {
   debug('will serialize user.id=%d', user.id)
   done(null, user.id)
@@ -118,6 +118,7 @@ passport.use(new (require('passport-local').Strategy) (
   }
 ))
 
+//REQ.USER
 auth.get('/whoami', (req, res) => res.send(req.user))
 
 auth.post('/:strategy/login', (req, res, next) =>
@@ -128,6 +129,7 @@ auth.post('/:strategy/login', (req, res, next) =>
 
 auth.post('/logout', (req, res, next) => {
   req.logout()
+  //req.session
   res.redirect('/api/auth/whoami')
 })
 
