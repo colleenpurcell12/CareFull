@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
 
+
+const Main = connect(
+  ({ auth }) => ({ user: auth })
+) (
+  ({ user }) =>
+    <div>
+      {user ? <WhoAmI/> : <Login/>} 
+      <Root />
+    </div>
+)
+
+
 export class Navbar extends Component {
  constructor(props) {
     super(props);
