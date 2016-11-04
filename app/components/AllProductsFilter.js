@@ -15,6 +15,7 @@ export default (FilteredProducts) =>
       //puts it on the state and this makes it a prop
     }
 
+
     handleChange (evt) {
       const filter = evt.target.value.toLowerCase();
       this.setState({ filter });
