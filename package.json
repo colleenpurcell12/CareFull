@@ -11,7 +11,7 @@
     "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
-    "start": "bin/setup && node_modules/.bin/webpack && nodemon server/start.js",
+    "start": "node_modules/.bin/webpack && node_modules/.bin/check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "seed": "node db/seed.js"
   },
   "repository": {
@@ -63,12 +63,20 @@
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
+<<<<<<< HEAD
     "webpack": "^1.13.3",
+=======
+>>>>>>> 8ef964b73c3809508238c11cb191da91dbef9609
     "babel": "^6.5.2",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
+<<<<<<< HEAD
     "babel-preset-react": "^6.16.0"
+=======
+    "babel-preset-react": "^6.16.0",
+    "webpack": "^1.13.3"
+>>>>>>> 8ef964b73c3809508238c11cb191da91dbef9609
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -76,5 +84,11 @@
     "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1"
+<<<<<<< HEAD
+=======
+  },
+  "engines": {
+    "node": "7.0.0"
+>>>>>>> 8ef964b73c3809508238c11cb191da91dbef9609
   }
 }

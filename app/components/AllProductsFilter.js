@@ -9,7 +9,9 @@ export default (FilteredProducts) =>
       this.state = { filter: '' };
       this.handleChange = this.handleChange.bind(this);
     }
-
+    componentDidMount() {
+      this.props.onLoadAllProducts(); 
+    }
     handleChange (evt) {
       const filter = evt.target.value.toLowerCase();
       this.setState({ filter });
