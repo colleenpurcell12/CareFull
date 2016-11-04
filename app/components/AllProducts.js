@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 
-//export default ({ products }) => (  
-// export default class AllProducts extends Component {
-
-//   componentDidMount() {
-//     this.props.onLoadAllProducts(); 
-//     //take products from back end dispatch method in container, which employs the async action creator fetch, 
-//     //puts it on the state and this makes it a prop
-//   }
-
-  render() { 
-    return (
+export default ({products, filter, handleChange}) => (
+  <div>
 
       <div>
+    
 
         {/*<div className='row col-md-12'>
           <h1>All Products</h1>
@@ -30,6 +22,15 @@ import {Link} from 'react-router';
           <div className="panel-heading"><h3>Categories</h3></div>
           <div className="panel-body">
             <p>descriptive text</p>
+
+            <input 
+      type='text'
+      value={filter}
+      placeholder='search by name'
+      onChange={handleChange}
+    />
+
+
         </div>
         <ul className="list-group">
           <li className="list-group-item">All Products</li>
@@ -42,7 +43,7 @@ import {Link} from 'react-router';
       </div>
 
           <ul className='list-unstyled'> {
-            this.props.products && this.props.products.map( (product, idx) =>
+            products && products.map( (product, idx) =>
               <li key={idx} className='product col-md-3'> 
                 <Link to={`/products/${product.id}`} className='product-name'>
                   {product.name}
@@ -56,7 +57,6 @@ import {Link} from 'react-router';
           </ul>
 
       </div>
-    )
-  }
-}
+  </div>
+)
 

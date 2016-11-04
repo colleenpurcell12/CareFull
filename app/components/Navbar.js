@@ -14,10 +14,9 @@ export default class Navbar extends Component {
               className="navbar-toggle collapsed"
               data-toggle="collapse"
               data-target=".navbar-collapse">
-              <span className="icon-bar">Products</span>
-              <span className="icon-bar">Login</span>
-              <span className="icon-bar">Cart</span>
-              <span className="icon-bar">Order History</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
             </button>
             
               <Link className="navbar-brand" to="/">CareFull</Link>
