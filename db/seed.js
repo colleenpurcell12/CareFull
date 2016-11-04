@@ -1,4 +1,4 @@
-// const db = require('APP/db')
+ const db = require('APP/db')
 
 const seedUsers = () => db.Promise.map([
   {name: 'Joe Biden', email: 'joe@biden.com', password: '1234'},
@@ -12,7 +12,7 @@ const seedReviews = () => db.Promise.map([
   {subject: 'Great items!', body: 'I really enjoed the items in the box', rating: 4, product_id: 1, author_id: 2 },
   {subject: 'Loved the package!', body: 'Amazing gift', rating: 4, product_id: 1, author_id: 2 },
   {subject: 'Amazing', body: 'really good', rating: 4, product_id: 2, author_id: 1 },
-  {subject: 'Enjoyed it', body: 'such a nice box', rating: 4, product_id: 3, author_id: 1 }
+  {subject: 'Enjoyed it', body: 'such a nice box', rating: 4, product_id: 3, author_id: 1 },
   {subject: 'Good stuff', body: 'loved the collection of goods', rating: 4, product_id: 4, author_id: 1 }
 ], review => db.model('reviews').create(review))
 
@@ -75,7 +75,7 @@ db.didSync
 
 
 
-const db = require('APP/db')
+// const db = require('APP/db')
 
 // const seedUsers = () => db.Promise.map([
 //   {name: 'Joe Biden', email: 'joe@biden.com', password: '1234'},

@@ -5,12 +5,6 @@ export default ({products, filter, handleChange}) => (
   <div>
 
       <div>
-    
-
-        {/*<div className='row col-md-12'>
-          <h1>All Products</h1>
-          <hr/>
-        </div>*/}
 
         <div className="row jumbotron">
           <h1>Get ready for Black Box Friday</h1>
@@ -24,11 +18,11 @@ export default ({products, filter, handleChange}) => (
             <p>descriptive text</p>
 
             <input 
-      type='text'
-      value={filter}
-      placeholder='search by name'
-      onChange={handleChange}
-    />
+              type='text'
+              value={filter}
+              placeholder='search by name'
+              onChange={handleChange}
+            />
 
 
         </div>
