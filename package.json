@@ -8,7 +8,7 @@
     "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
-    "start": " node_modules/.bin/webpack && bin/setup && nodemon server/start.js",
+    "start": "node_modules/.bin/webpack && node_modules/.bin/check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "seed": "node db/seed.js"
   },
   "repository": {
@@ -42,6 +42,7 @@
     "express": "^4.14.0",
     "jQuery": "^1.7.4",
     "jquery": "^3.1.1",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",
@@ -59,15 +60,14 @@
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.13.3",
     "babel": "^6.5.2",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0"
+    "babel-preset-react": "^6.16.0",
+    "webpack": "^1.13.3"
   },
   "devDependencies": {
-    
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
     "supertest": "^2.0.1",
