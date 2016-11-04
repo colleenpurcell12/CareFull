@@ -11,6 +11,9 @@ const getOrderDetailsAction = (orderDetails) => ({
 export const fetchOrderDetails = () => 
   dispatch => 
     fetch(`/api/cart/`) 
-      .then(res => res.json())
+      .then(res => {
+      	console.log("IN THE fetchOrderDetails, res is *hopefuly not empty array ", res)
+      	res.json()
+      })
       .then(orderDetails => dispatch(getOrderDetailsAction(orderDetails)));
   
