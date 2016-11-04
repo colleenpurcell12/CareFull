@@ -10,14 +10,13 @@ import ProductContainer from './containers/ProductContainer';
 import fetchOneProduct from './action-creators/product';
 import fetchReviews from './action-creators/review';
 
-import Root from './components/Root'
 import Login from './components/Login'
 import Signup from './components/signup'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 
 import Order from './components/Order'
-
+import Navbar from './components/Navbar'
 
 import WhoAmI from './components/WhoAmI'
 
@@ -27,11 +26,12 @@ import WhoAmI from './components/WhoAmI'
 const Main = connect(
   //mapStateToProps
   ({ auth }) => ({ user: auth })
-) ( //invoked on the component
-  ({ user }) =>
-    <div>
-      {user ? <WhoAmI/> : <Login/>} 
-      <Root />
+
+) (
+  ({ user, children }) => 
+    <div id='main' className="container-fluid">
+      <Navbar loginButton={user ? <WhoAmI/> : <Login/>}/>
+      {children}
     </div>
 )
 
@@ -44,7 +44,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
 
-     <Route path="/" component={Root}>
+     <Route path="/" component={Main}>
       <IndexRedirect to="products" />
       <Route path="products" component={AllProductsContainer}/>
         <Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
@@ -59,5 +59,5 @@ render (
   </Provider>
 
   ,
-  document.getElementById('main')
+  document.getElementById('app')
 )

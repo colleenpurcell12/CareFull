@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 //the children are the Routes inside Route path Root
 export default ({ children }) => (
-  <div id="main" className="container-fluid">
+  <div id='main' className="container-fluid">
     <Navbar />
     { children }
     

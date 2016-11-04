@@ -10,42 +10,53 @@ import {Link} from 'react-router';
 //     //puts it on the state and this makes it a prop
 //   }
 
-//   render() { 
-//   //console.log("this.props.products ",this.props.products ) 
-  
-//     return (
-//       <div>
-//         <h1>All Products</h1>
-//         {/* //image, caption, price, button add to cart */}
-//         <ul> {
-//           this.props.products && this.props.products.map( (product, idx) =>
-//             <li key={idx}> {/*key={product.id}*/}
-//               <Link to={`/products/${product.id}`}>{product.name}</Link>
-//             </li>
-//           )
-//         } </ul>
-//       </div>
-//     )
-//   }
-// }
+  render() { 
+    return (
 
+      <div>
 
-export default ({products, filter, handleChange}) => (
-  <div>
-    <h1>Products</h1>
-    {/* //image, caption, price, button add to cart */}
-    <input 
-      type='text'
-      value={filter}
-      placeholder='search by name'
-      onChange={handleChange}
-    />
-    <ul> {
-      products && products.map( (product, idx) =>
-        <li key={idx}> {/*key={product.id}*/}
-          <Link to={`/products/${product.id}`}>{product.name}</Link>
-        </li>
-      )
-    } </ul>
-  </div>
-)
+        {/*<div className='row col-md-12'>
+          <h1>All Products</h1>
+          <hr/>
+        </div>*/}
+
+        <div className="row jumbotron">
+          <h1>Get ready for Black Box Friday</h1>
+          <p>...</p>
+          <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+        </div>
+
+        <div className="panel col-md-2 ">
+          <div className="panel-heading"><h3>Categories</h3></div>
+          <div className="panel-body">
+            <p>descriptive text</p>
+        </div>
+        <ul className="list-group">
+          <li className="list-group-item">All Products</li>
+          <li className="list-group-item">Snackboxes</li>
+          <li className="list-group-item">Craftboxes</li>
+        </ul>
+      </div>
+
+      <div className='col-md-1'>
+      </div>
+
+          <ul className='list-unstyled'> {
+            this.props.products && this.props.products.map( (product, idx) =>
+              <li key={idx} className='product col-md-3'> 
+                <Link to={`/products/${product.id}`} className='product-name'>
+                  {product.name}
+                  <img src='sample.jpg'></img>
+                </Link>
+                <p>${product.price}</p>
+                <button className='btn btn-default'>add to cart</button>
+              </li>
+            )
+          } 
+          </ul>
+
+      </div>
+    )
+  }
+}
+
