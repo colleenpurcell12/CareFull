@@ -19,7 +19,7 @@ export default class Product extends Component {
         
         <h3>{this.props.currentProduct &&this.props.currentProduct.name}</h3>
 
-        <img src='sample.jpg'></img>
+        <img src={'/' + this.props.currentProduct.photo}></img>
 
         <h4>What's Inside? </h4>
         <p>{this.props.currentProduct &&this.props.currentProduct.description}</p>

@@ -32,7 +32,7 @@ const Product = db.define('products', {
   },
   photo: {
     type: Sequelize.STRING,
-    defaultValue: '/default.svg'
+    defaultValue: 'sample.jpg'
   },
 }, {
   hooks: {
