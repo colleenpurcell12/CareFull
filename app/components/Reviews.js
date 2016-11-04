@@ -17,6 +17,7 @@ class Reviews extends Component {
     const review = {
       subject: event.target.subject.value,
       body: event.target.body.value,
+      rating: 5,
       author_id: 1,
       product_id: this.props.productId,
     }
@@ -56,5 +57,3 @@ class Reviews extends Component {
 const MapDispatch = { createNewReview }
 
 export default connect(null, MapDispatch)(Reviews) //container equivalent
-
-

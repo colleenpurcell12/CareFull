@@ -9,10 +9,12 @@ const reducer = (state=null, action) => {
 }
 
 const AUTHENTICATED = 'AUTHENTICATED'
+//Synch  methods
 export const authenticated = user => ({
   type: AUTHENTICATED, user
 })
 
+//Async methods
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/local/login',
