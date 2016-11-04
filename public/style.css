@@ -1,0 +1,35 @@
+.navbar {
+	width: 100%;
+}
+
+.product {
+	width: auto;
+	height: auto;
+	border: 0px solid yellow;
+
+}
+.product-name {
+	font-size: 1.5em;
+	color: black;
+	font-family: georgia, serif;
+	display: block;
+}
+
+.product img {
+	width: 300px;
+	height: auto;
+	display: block;
+}
+
+.logout-button {
+	height: 80%;
+	margin: 0;
+	padding: 1px;
+	font-size: 0.8em;
+}
+
+.jumbotron {
+	background-image: url('jumbo.jpg');
+	height: 500px;
+	border-radius: 0;
+}
