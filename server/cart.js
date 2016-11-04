@@ -3,28 +3,17 @@ const OrderProduct = require('../db/models/orderProduct')
 const Product = require('../db/models/product')
 
 const cart = require('express').Router()
-
-
-    //req.session.orderId
-    //query orderid and set to req.session
-    //OrderProduct.findAll(req.session.orderId)
-    //return name, price, quanity, productid, orderid
-    //Cart routes
-        //onEnter route at main route, loads cart at every page 
-    //GET ALL ITEMS IN CART
+    //GET ALL PRODUCTS IN ORDER
     .get('/', (req, res, next) => 
-         Order.getCart(req.user) //custom function, find or creates pending order
-        .then(function(foundOrder) {
-            res.send( foundOrder)
-            // use getAssociation order
-           return foundOrder.getProducts()
- 
+        OrderProduct.findAll({
+            where: {
+                order_id: req.session.orderId
+            }
         })
-        .then(function(foundProductsDetailInOrder){
-            res.send(foundProductsDetailInOrder)
+        .then(function(allProducts){
+            res.send(allProducts)
         })
-        .catch(err => console.log(err))
-
+        .catch(next)
     )
   
     //GET ALL PAST ORDERS
@@ -41,19 +30,45 @@ const cart = require('express').Router()
         .catch(next)
     )
     //ADD ITEM TO CART
-    .post('/', (req, res, next) =>
-        Order.getCart(req.user)
-        .then(function(foundOrder) {  //req,body is product 
-            return foundOrder.addProduct(req.body, {name: req.body.name, price: req.body.price})
-        })
-        .then(function(itemAddedToCart){
-            res.status(201).send(itemAddedToCart)
-        })  
-        .catch(next)
-    )
+    .post('/', (req, res, next) => {
+        if(req.user) {
+            Order.findOrCreate({
+             where: {status: pending, user_id: req.user.id}
+            })
+            .then(function(foundOrder) {  //req,body is product 
+            req.session.orderId = foundOrder[0].id
+            return foundOrder[0].addProduct(req.body, {name: req.body.name, price: req.body.price})
+            })
+            .then(function(order) {
+                res.sendStatus(201)
+            })
+        }
+        else {
+            if(!req.session.orderId) {
+                Order.create({})
+                .then(function(createdOrder) {
+                    req.session.orderId = createdOrder.id
+                    return createdOrder.addProduct(req.body, {name: req.body.name, price: req.body.price})
+                })
+                .then(function(order) {
+                    res.sendStatus(201)
+                })
+            } else {
+                Order.findById(req.session.orderId)
+                .then(function(foundOrder) {
+                    return foundOrder.addProduct(req.body, {name: req.body.name, price: req.body.price})
+                })
+                .then(function(order) {
+                    res.sendStatus(201)
+                })
+            }
+        }
+    })
+
+
     //DELETE ITEM FROM CART
     .delete('/:productId', (req, res, next) => 
-        Order.getCart(req.user)
+        Order.findById(req.session.orderId)
         .then(function(foundOrder) {
             return foundOrder.removeProduct(productId)
         })
