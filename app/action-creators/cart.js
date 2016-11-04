@@ -10,7 +10,7 @@ const getOrderDetailsAction = (orderDetails) => ({
 //asychronous
 export const fetchOrderDetails = () => 
   dispatch => 
-    fetch(`/api/cart/`) //WRONG NEED TO FIX
+    fetch(`/api/cart/`) 
       .then(res => res.json())
       .then(orderDetails => dispatch(getOrderDetailsAction(orderDetails)));
   

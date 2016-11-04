@@ -11,21 +11,35 @@ const cart = require('express').Router()
     //return name, price, quanity, productid, orderid
     //Cart routes
         //onEnter route at main route, loads cart at every page 
+        
     //GET ALL ITEMS IN CART
-    .get('/', (req, res, next) => 
-         Order.getCart(req.user) //custom function, find or creates pending order
-        .then(function(foundOrder) {
-            res.send( foundOrder)
-            // use getAssociation order
-           return foundOrder.getProducts()
+    
+    .get('/', function(req, res, next) {
+       OrderProduct.findAll({
+               where: {
+                   orderId: req.session.orderId
+               }
+           })
+           .then(products => {
+               res.send(products);
+           });
+    })
+    // .get('/', (req, res, next) => {
+    //     console.log("IS IN THE CART route in command line")
+    //      Order.getCart(req.user) //custom function, find or creates pending order
+    //     .then(function(foundOrder) {
+    //         res.send( foundOrder)
+    //         // use getAssociation order
+    //         console.log(" CART route has foundOrder",foundOrder)
+    //        return foundOrder.getProducts()
  
-        })
-        .then(function(foundProductsDetailInOrder){
-            res.send(foundProductsDetailInOrder)
-        })
-        .catch(err => console.log(err))
+    //     })
+    //     .then(function(foundProductsDetailInOrder){
+    //         res.send(foundProductsDetailInOrder) //array
+    //     })
+    //     .catch(err => console.log(err))
 
-    )
+    // })
   
     //GET ALL PAST ORDERS
     .get('/orderhistory', (req, res, next) =>

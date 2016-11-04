@@ -10,7 +10,7 @@ export default class Cart extends Component {
 	  }
 
 	render() {
-	//console.log("this.props.orderDetails ",this.props.orderDetails )    
+	console.log("this.props.orderDetails ",this.props.orderDetails )    
 	return (
 	  <div>
 	    <h2>Items in Your Cart</h2>

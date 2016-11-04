@@ -2,16 +2,18 @@ const Product = require('../db/models/product')
 
 const products = require('express').Router()
 	//GET ALL
-    .get('/', (req, res, next) =>
+    .get('/', function (req, res, next) {
+        //console.log("REQ HERE", req)
+        //console.log("REQ.SESSION", req.session)
+        //console.log("REQ.USER", req.user)
         Product.findAll({})
             .then(products =>
-                console.log("REQ.SESSION", req.session)
-                console.log("REQ.USER", req.user)
+                
                 res.send(products)
             )
             .catch(next)
 
-    )
+    })
     //GET ONE
     .get('/:productID', (req, res, next) =>
         Product.findOne({

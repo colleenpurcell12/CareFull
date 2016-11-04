@@ -5,8 +5,8 @@ import { fetchAllProducts } from '../action-creators/products';
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-    onLoadAllProducts (products) {
-      dispatch( fetchAllProducts(products) ) //doesn't actually take a parameter in func def
+    onLoadAllProducts () { //products
+      dispatch( fetchAllProducts() ) //doesn't actually take a parameter in func def
     }
   }
 }

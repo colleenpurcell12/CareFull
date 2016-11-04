@@ -34,7 +34,7 @@ const orders = require('express').Router()
         //
         Order.findOne({
             where: {
-                user_id: req.user_id
+                user_id: req.user_id,
                 status: 'pending'
             }
         })
@@ -49,9 +49,9 @@ const orders = require('express').Router()
                 city: req.body.first_name,
                 state: req.body.first_name,
                 zipcode: req.body.first_name,
-                creditcard:  req.body.first_name,
+                creditcard:  req.body.first_name
             })
-        }
+        })
         .catch(next)
         //DOES THIS RETURN THE OBJECT atfer update, might need to reload
     })
