@@ -1,4 +1,6 @@
 const Order = require('../db/models/order')
+const OrderProduct = require('../db/models/orderProduct')
+const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
@@ -12,17 +14,18 @@ const orders = require('express').Router()
     )
     //GET ONE
     .get('/:orderID', (req, res, next) =>
-        Product.findOne({
+        Order.findOne({
         	where: 
         		{
         			id: req.params.orderID 
 	        	}
 	        })
-        .then(oneProduct =>
-            res.send(oneProduct)
+        .then(oneOrder =>
+            res.send(oneOrder)
         )
         .catch(next)
     )
+    //
     .post('/', function(req,res,next){
         Product.create(req.body) 
         .then(function(orderCreated){
@@ -32,10 +35,11 @@ const orders = require('express').Router()
         //} 
 
     })
-    .delete('/:productID', (req, res, next) =>
+    //
+    .delete('/:orderId', (req, res, next) =>
 
-        Product.destroy({
-            where: {id: req.params.orderID}
+        Order.destroy({
+            where: {id: req.params.orderId}
             })
         .then(function() {
                res.sendStatus(200);
@@ -44,4 +48,6 @@ const orders = require('express').Router()
     )
 
 module.exports = orders
+
+
 
