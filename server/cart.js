@@ -5,17 +5,19 @@ const Product = require('../db/models/product')
 const cart = require('express').Router()
 
     //GET ALL PRODUCTS IN ORDER
-    .get('/', (req, res, next) =>
+    .get('/', (req, res, next) => {
+        console.log("IN THE CART ROUTE")
         OrderProduct.findAll({
             where: {
                 order_id: req.session.orderId
             }
         })
         .then(function(allProducts){
+            console.log("IN THE CART ROUTE, allProducts",allProducts)
             res.send(allProducts)
         })
         .catch(next)
-    )
+    })  
 
     //GET ALL PAST ORDERS
     .get('/orderhistory', (req, res, next) =>
