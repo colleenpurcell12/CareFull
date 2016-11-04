@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 //synchronous
 const getAllProductsAction = (products) => ({
 	type: 'GET_ALL_PRODUCTS',
