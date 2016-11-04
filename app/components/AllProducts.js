@@ -46,7 +46,7 @@ export default class AllProducts extends Component {
               <li key={idx} className='product col-md-3'> 
                 <Link to={`/products/${product.id}`} className='product-name'>
                   {product.name}
-                  <img src={product.photo}></img>
+                  <img src='sample.jpg'></img>
                 </Link>
                 <p>${product.price}</p>
                 <button className='btn btn-default'>add to cart</button>
