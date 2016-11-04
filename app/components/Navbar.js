@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
 
-export class Navbar extends Component {
- constructor(props) {
-    super(props);
-  }
+export default class Navbar extends Component {
   render() { 
     return (
       <div>
-         <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
             <button
@@ -29,7 +26,6 @@ export class Navbar extends Component {
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
 
-          {/* creating a dropdown for products */}
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Boxes <span className="caret"></span></a>
 
@@ -40,18 +36,9 @@ export class Navbar extends Component {
                 <li role="separator" className="divider"></li>
                 <li><a href="#">separated section</a></li>
               </ul>
-
             </li>
-
-              <li>  
-                <Link to="/login" activeClassName="active">
-                  Login
-                </Link>
-              </li>
               <li>
-                <Link to="/signup" activeClassName="active">
-                  Sign Up
-                </Link>
+
               </li>
               <li>
                 <Link to="/cart" activeClassName="active">
@@ -62,10 +49,13 @@ export class Navbar extends Component {
               <li>
                 <Link to="/order" activeClassName="active">Order History</Link>
               </li>
+            
+              {this.props.loginButton}
+
           </ul>
-          </div>
         </div>
-      </nav>
+      </div>
+    </nav>
     </div>
     )
   }
@@ -75,4 +65,4 @@ export class Navbar extends Component {
 /* -----------------    CONTAINER     ------------------ */
 
 
-export default connect(null, null)(Navbar);
+// export default connect(null, null)(Navbar);

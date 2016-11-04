@@ -2,20 +2,30 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export const Login = ({ login }) => (
-  <div>
-    <h2>Login</h2>
-    <form onSubmit={evt => {
-      evt.preventDefault()
-      login(evt.target.username.value, evt.target.password.value)
-    } }>
-      <input name="username" />
-      <input name="password" type="password" />
-      <input type="submit" value="Login" />
-    </form>
-    <p>New user? Create an account</p>
-    <Link to="/signup" activeClassName="active">Sign Up</Link>
+  <li className='dropdown'>
 
-  </div>
+    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login/Sign Up<span className="caret"></span></a>
+
+    <ul className='dropdown-menu'>
+      <li>
+        <form onSubmit={evt => {
+        evt.preventDefault()
+        login(evt.target.username.value, evt.target.password.value)
+        }}>
+        <input name="username" />
+        <input name="password" type="password" />
+        <input type="submit" value="Login" />
+      </form>
+      </li>
+      <li role="separator" className="divider"></li>
+      <li>
+        <p>New user? Create an account</p>
+        <Link to="/signup" activeClassName="active">Sign Up</Link>
+      </li>
+      
+    </ul>
+
+  </li>
  )
 
 import {login} from 'APP/app/reducers/auth'
