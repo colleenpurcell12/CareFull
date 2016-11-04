@@ -14,14 +14,14 @@ const orders = require('express').Router()
     )
     //GET ONE
     .get('/:orderID', (req, res, next) =>
-        Product.findOne({
+        Order.findOne({
         	where: 
         		{
         			id: req.params.orderID 
 	        	}
 	        })
-        .then(oneProduct =>
-            res.send(oneProduct)
+        .then(oneOrder =>
+            res.send(oneOrder)
         )
         .catch(next)
     )
@@ -36,10 +36,10 @@ const orders = require('express').Router()
 
     })
     //
-    .delete('/:productID', (req, res, next) =>
+    .delete('/:orderId', (req, res, next) =>
 
-        Product.destroy({
-            where: {id: req.params.orderID}
+        Order.destroy({
+            where: {id: req.params.orderId}
             })
         .then(function() {
                res.sendStatus(200);

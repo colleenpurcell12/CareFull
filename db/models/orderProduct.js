@@ -13,7 +13,9 @@ const Order = require('APP/db/models/order')
 //product in order
 const OrderProduct = db.define('order_product', {
 		//price, quantity, product_id, order_id
-
+	name: {
+		type: Sequelize.STRING
+	},
 	price: {
 	    type: Sequelize.FLOAT,
 	},
