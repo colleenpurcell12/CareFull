@@ -9,6 +9,8 @@ api
   .use('/users', require('./users'))
   .use('/products', require('./product'))
   .use('/reviews', require('./reviews'))
+  .use('/orders', require('./order'))
+    .use('/cart', require('./cart'))
 
 
 // Send along any errors

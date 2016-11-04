@@ -45,9 +45,9 @@ render (
     <Router history={browserHistory}>
 
      <Route path="/" component={Root}>
-     	<IndexRedirect to="products" />
-     	<Route path="products" component={AllProductsContainer}/>
-      	<Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
+      <IndexRedirect to="products" />
+      <Route path="products" component={AllProductsContainer}/>
+        <Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup}/>
         <Route path="cart" component={Cart}/>
@@ -61,5 +61,3 @@ render (
   ,
   document.getElementById('main')
 )
-
-
