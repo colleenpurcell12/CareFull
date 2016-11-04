@@ -6,7 +6,7 @@ export default class Navbar extends Component {
   render() { 
     return (
       <div>
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
           <div className="navbar-header">
             <button
@@ -19,11 +19,13 @@ export default class Navbar extends Component {
               <span className="icon-bar">Cart</span>
               <span className="icon-bar">Order History</span>
             </button>
-            <Link className="navbar-brand" to="/">CareFull</Link>
+            
+              <Link className="navbar-brand" to="/">CareFull</Link>
             
           </div>
 
           <div className="collapse navbar-collapse">
+
             <ul className="nav navbar-nav">
 
             <li className="dropdown">

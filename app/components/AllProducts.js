@@ -11,12 +11,19 @@ export default class AllProducts extends Component {
   }
 
   render() { 
-  //console.log("this.props.products ",this.props.products )  
     return (
+
       <div>
-        <div className='row col-md-12'>
+
+        {/*<div className='row col-md-12'>
           <h1>All Products</h1>
           <hr/>
+        </div>*/}
+
+        <div className="row jumbotron">
+          <h1>Get ready for Black Box Friday</h1>
+          <p>...</p>
+          <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
         </div>
 
         <div className="panel col-md-2 ">

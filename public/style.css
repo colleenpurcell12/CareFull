@@ -18,6 +18,15 @@
 	display: block;
 }
 
-/*.logout-button {
-	display: inline-block;
-}*/
+.logout-button {
+	height: 80%;
+	margin: 0;
+	padding: 1px;
+	font-size: 0.8em;
+}
+
+.jumbotron {
+	background-image: url('jumbo.jpg');
+	height: 500px;
+	border-radius: 0;
+}

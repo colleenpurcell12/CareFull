@@ -3,7 +3,10 @@ import React from 'react'
 export const WhoAmI = ({ user, logout }) => (
 
   <li className="whoami">
-    <span className="whoami-user-name">Welcome, {user && user.name} </span>
+  <a href="#">
+    Signed in as {user && user.name} 	&nbsp;
+  	<button className="btn btn-default navbar-btn logout-button" onClick={logout}>Logout</button>
+  </a>
   </li>
 
 )
