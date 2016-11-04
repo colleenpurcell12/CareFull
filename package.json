@@ -72,5 +72,9 @@
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3"
-  }
+  },
+  "engines": {
+      "node": "7.0.0"
+    }
+
 }
