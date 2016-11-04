@@ -26,6 +26,11 @@ module.exports = app
     keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
   }))
 
+//SESSION
+//HOW DO QUERY SESSION
+//if you store the order on the session, how do you get the session
+//req.user and req.session
+
   // Body parsing middleware
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())

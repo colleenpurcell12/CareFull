@@ -14,14 +14,20 @@ import Root from './components/Root'
 import Login from './components/Login'
 import Signup from './components/signup'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+
 import Order from './components/Order'
 
 
 import WhoAmI from './components/WhoAmI'
 
+
+//should we replace the root with the Main
+
 const Main = connect(
+  //mapStateToProps
   ({ auth }) => ({ user: auth })
-) (
+) ( //invoked on the component
   ({ user }) =>
     <div>
       {user ? <WhoAmI/> : <Login/>} 
@@ -43,8 +49,9 @@ render (
      	<Route path="products" component={AllProductsContainer}/>
       	<Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
         <Route path="login" component={Login} />
-        <Route path="signup" component={Signup} />
-        <Route path="cart" component={Cart} />
+        <Route path="signup" component={Signup}/>
+        <Route path="cart" component={Cart}/>
+        <Route path="checkout" component={Checkout} />
         <Route path="order" component={Order} />
       </Route>
 

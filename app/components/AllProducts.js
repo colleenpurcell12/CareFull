@@ -11,7 +11,8 @@ export default class AllProducts extends Component {
   }
 
   render() { 
-  //console.log("this.props.products ",this.props.products )  
+  //console.log("this.props.products ",this.props.products ) 
+  
     return (
       <div>
         <h1>All Products</h1>

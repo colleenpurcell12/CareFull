@@ -5,6 +5,8 @@ const products = require('express').Router()
     .get('/', (req, res, next) =>
         Product.findAll({})
             .then(products =>
+                console.log("REQ.SESSION", req.session)
+                console.log("REQ.USER", req.user)
                 res.send(products)
             )
             .catch(next)
