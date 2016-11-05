@@ -34,6 +34,7 @@ export default (FilteredProducts) =>
             }
           filter={filter}
           handleChange={this.handleChange}
+          postItemToCart={this.props.postItemToCart}
           />
         </div>
       )

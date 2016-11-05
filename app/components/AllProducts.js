@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 
-export default ({products, filter, handleChange}) => (
+export default ({products, filter, handleChange, postItemToCart}) => (
   <div>
 
       <div>
@@ -44,7 +44,7 @@ export default ({products, filter, handleChange}) => (
                   <img src='sample.jpg'></img>
                 </Link>
                 <p>${product.price}</p>
-                <button className='btn btn-default'>add to cart</button>
+                <button onClick={ () => postItemToCart(product) } className='btn btn-default'>add to cart</button>
               </li>
             )
           } 

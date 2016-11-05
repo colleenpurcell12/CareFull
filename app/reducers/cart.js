@@ -26,6 +26,8 @@ const cartReducer = function(state = initialState, action) {
     case 'GET_ORDER_DETAILS' :
       console.log("HIT THE cartReducer orderDetails", action.orderDetails)
       return action.orderDetails
+    case 'ADD_ITEM_TO_CART':
+      return state.concat(action.orderDetails)
     default: return state
   }
 };
