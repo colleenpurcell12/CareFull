@@ -1,4 +1,4 @@
-import Cart from '../components/AllProducts';
+import Cart from '../components/Cart';
 import { connect } from 'react-redux';
 import { fetchOrderDetails } from '../action-creators/cart';
 
@@ -7,7 +7,7 @@ const mapDispatchToProps = function (dispatch, ownProps) {
   return {
     onLoadOrderDetails () { //UNSURE about user
     	const allOrderProducts = fetchOrderDetails()
-    	console.log("DISPATVH TO PROPS orderDetails ", allOrderProducts)
+    	console.log("DISPATCH TO PROPS orderDetails ", allOrderProducts)
       dispatch( allOrderProducts ) //doesn't actually take a parameter in func def
     }
   }

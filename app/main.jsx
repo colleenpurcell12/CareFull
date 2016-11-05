@@ -10,9 +10,12 @@ import ProductContainer from './containers/ProductContainer';
 import fetchOneProduct from './action-creators/product';
 import fetchReviews from './action-creators/review';
 
+import CartContainer from './containers/CartContainer'
+
 import Login from './components/Login'
 import Signup from './components/signup'
-import Cart from './components/Cart'
+//import Cart from './components/cart'
+
 import Checkout from './components/Checkout'
 
 import Order from './components/Order'
@@ -50,7 +53,7 @@ render (
         <Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup}/>
-        <Route path="cart" component={Cart}/>
+        <Route path="cart" component={CartContainer}/>
         <Route path="checkout" component={Checkout} />
         <Route path="order" component={Order} />
       </Route>

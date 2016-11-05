@@ -13,4 +13,6 @@ export const fetchAllProducts = () =>
     fetch(`/api/products/`)
       .then(res => res.json())
       .then(products => dispatch(getAllProductsAction(products)));
+
+
   
