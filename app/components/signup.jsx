@@ -15,6 +15,7 @@ class Signup extends Component {
 			email: event.target.email.value,
 			password: event.target.password.value
 		}
+		console.log('handling the submit and sending user: ', user)
 		this.props.newSignUp(user);
 	}
 
@@ -26,7 +27,7 @@ class Signup extends Component {
 				<input type="text" placeholder="Name" name="name" />
 				<input type="text" placeholder="Email" name="email" />
 				<input type="text" placeholder="Password" name="password" />
-				<button>Sign up</button>
+				<input type='submit' value='Sign Up'/>
 				</form>
 			</div>
 		)
@@ -36,6 +37,9 @@ class Signup extends Component {
 export default connect(
 	null, 
 	(dispatch) => ({
-		newSignUp: payload => postNewUser(payload)
+		newSignUp: (payload) => {
+			console.log('new sign up dispatching with payload: ', payload)
+			postNewUser(payload)
+		}
 	})
 	)(Signup);
