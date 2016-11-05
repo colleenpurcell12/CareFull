@@ -128,8 +128,8 @@ auth.post('/:strategy/login', (req, res, next) =>
 )
 
 auth.post('/logout', (req, res, next) => {
+  req.session.orderId = null;
   req.logout()
-  //req.session
   res.redirect('/api/auth/whoami')
 })
 

@@ -22,6 +22,7 @@ export default class Cart extends Component {
 	          <span>{item.inventory_quantity}</span>
 	          <span>  {item.name}</span> 
 	          <span>   ${item.price}</span>
+	          <button onClick={() => this.props.deleteItemFromCart(item.product_id)}>Delete</button>
 	        </li>
 	      )
 	    } </ul>

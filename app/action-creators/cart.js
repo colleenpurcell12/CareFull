@@ -25,5 +25,12 @@ export const addItemToCart = product => dispatch => {
          .catch(err => console.error(`Adding item: ${product} unsuccesful`, err))
 }
 
+const removeItem = productId => ({ type: 'REMOVE_ITEM_FROM_CART', productId})
+
+export const removeItemFromCart = productId => dispatch => {
+  dispatch(removeItem(productId))
+  axios.delete(`/api/cart/${productId}`)
+    .catch(err => console.error(`Adding item: ${product} unsuccesful`, err))
+}
 
 
