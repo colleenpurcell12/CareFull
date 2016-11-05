@@ -1,11 +1,6 @@
 'use strict'
 
-const newSignUpAction = (user) => ({
-	type: 'CREATE_NEW_USER',
-	user
-})
-
-const postNewUser = (user) => (
+export const postNewUser = (user) => (
 	dispatch =>
 		fetch('/api/users', {
 			method: "POST",
@@ -15,5 +10,4 @@ const postNewUser = (user) => (
 			}
 		}
 	)
-		.then(user)
 )

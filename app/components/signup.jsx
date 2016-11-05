@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { postNewUser } from '../action-creators/signUp'
 
-export default class Signup extends Component {
+class Signup extends Component {
 	constructor() {
 		super()
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -13,7 +15,7 @@ export default class Signup extends Component {
 			email: event.target.email.value,
 			password: event.target.password.value
 		}
-		console.log(user)
+		this.props.newSignUp(user);
 	}
 
 	render() {
@@ -30,3 +32,10 @@ export default class Signup extends Component {
 		)
 	}
 }
+
+export default connect(
+	null, 
+	(dispatch) => ({
+		newSignUp: payload => postNewUser(payload)
+	})
+	)(Signup);
