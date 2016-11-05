@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { postNewUser } from '../action-creators/signUp'
+import axios from 'axios';
+
 
 class Signup extends Component {
 	constructor() {
@@ -15,7 +16,6 @@ class Signup extends Component {
 			email: event.target.email.value,
 			password: event.target.password.value
 		}
-		console.log('handling the submit and sending user: ', user)
 		this.props.newSignUp(user);
 	}
 
@@ -37,9 +37,8 @@ class Signup extends Component {
 export default connect(
 	null, 
 	(dispatch) => ({
-		newSignUp: (payload) => {
-			console.log('new sign up dispatching with payload: ', payload)
-			postNewUser(payload)
+		newSignUp: (user) => {
+			axios.post('/api/users/', user)
 		}
 	})
 	)(Signup);

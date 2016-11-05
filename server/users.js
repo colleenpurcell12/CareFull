@@ -8,7 +8,6 @@ const userRouter = require('express').Router()
 
 //Custom routes go here.
 userRouter.post('/', (req, res, next) => {
-console.log('posting new user')
 	User.findOrCreate(req.body)
 	.then(user => {
 		res.send(user)
