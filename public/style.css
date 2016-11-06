@@ -6,15 +6,6 @@ body {
 	width: 100%;
 }
 
-.navbar-brand img{
-	height: 40px;
-	padding: 0;
-	position: 0;
-}
-.navbar-brand {
-	padding: 5px;
-}
-
 .brand img {
 	height: 100px;
 	padding-bottom: 20px;

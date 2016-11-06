@@ -24,7 +24,7 @@ export default class Cart extends Component {
 	    		<th>Name</th>
     			<th>Price</th>
     			<th>Quantity</th>
-    			<th>Delete</th>
+    			<th>Remove?</th>
 	    	</tr>
 	    	</thead>
 	    	<tbody>
@@ -34,15 +34,30 @@ export default class Cart extends Component {
 	        	<td>{idx+1}</td>
 	          <td>{item.name}</td> 
 	          <td>${item.price}</td>
-	          <td>{item.quantity}</td>
-	          <td><button onClick={() => this.props.deleteItemFromCart(item.product_id)}>Delete</button></td>
+	          <td>
+	          	<input type='text' value=
+	          	{item.quantity}>
+	          	</input>
+	          </td>
+	          <td>
+	          	<button className='btn-default btn' onClick={() => this.props.deleteItemFromCart(item.product_id)}>
+	          	<span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	 						</button>
+	 					</td>
 	        </tr>
 	      )
 	    } 
+	    	<tr>
+	    		<td>Total</td>
+	    		<td></td>
+	    		<td>totalPrice</td>
+	    		<td>totalQuantity</td>
+	    		<td>
+	    			<Link to="/checkout" className='btn btn-success btn-lrg' activeClassName="active">Checkout</Link>
+	    		</td>
+	    	</tr>
 	    	</tbody>
 	    </table>
-
-	    <Link to="/checkout" activeClassName="active">Checkout</Link>
 
 	  </div>
 	)

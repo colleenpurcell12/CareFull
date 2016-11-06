@@ -5,13 +5,14 @@ export default ({products, filter, handleChange, postItemToCart}) => (
   <div className='row'>
 
     <div className="row jumbotron">
+      <h3>Hi! Welcome to</h3>
       <h1 className='brand'>
-        <img src='pumpkin-logo.png'/>
-        CareFull
+        Care<img src='pumpkin-logo.png' />Full&nbsp;
       </h1>
+      <h3>~the best in class care packages, curated by our expert style elves~</h3>
+      <hr/>
       <h2>Get ready for Black Box Friday</h2>
-      <p>...</p>
-      <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      <p><a className="btn btn-default" href="#" role="button">Check out these deals!</a></p>
     </div>
 
     <div className="panel col-md-2 ">
