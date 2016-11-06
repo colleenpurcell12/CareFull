@@ -17,12 +17,17 @@ const cart = require('express').Router()
             Order.findOrCreate({
                 where: {status: 'pending', user_id: req.user.id}
                 }
-            ).then(order => req.session.orderId = order[0].id)
-            .then(() => next()).catch(next)
+            ).then(order => {
+                req.session.orderId = order[0].id
+                next()
+            }).catch(next)
         //case 1
         else if(!req.session.orderId && !req.user) 
-            Order.create({}).then(createdOrder => req.session.orderId = createdOrder.id)
-            .then(() => next()).catch(next)
+            Order.create({}).then(createdOrder => {
+                req.session.orderId = createdOrder.id
+                next()
+            }).catch(next)
+        else next()
     })
     //case 3,4
     //GET ALL PRODUCTS IN ORDER
@@ -32,7 +37,6 @@ const cart = require('express').Router()
                 order_id: req.session.orderId
             }
         }).then(products => res.send(products)).catch(next)
-
     )
 
     //GET ALL PAST ORDERS
@@ -51,13 +55,13 @@ const cart = require('express').Router()
 
     //ADD ITEM TO CART
     .post('/', (req, res, next) => 
-            Order.findById(req.session.orderId)
-            .then(function(foundOrder) {
-                return foundOrder.addProduct(req.body.id, {name: req.body.name, price: req.body.price})
-            })
-            .then(function(order) {
-                res.status(201).send(order)
-            })
+        Order.findById(req.session.orderId)
+        .then(function(foundOrder) {
+            return foundOrder.addProduct(req.body.id, {name: req.body.name, price: req.body.price})
+        })
+        .then(function(order) {
+            res.status(201).send(order)
+        })
     )
 
     //DELETE ITEM FROM CART
