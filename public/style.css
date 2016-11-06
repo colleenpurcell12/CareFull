@@ -6,6 +6,30 @@ body {
 	width: 100%;
 }
 
+.navbar-brand img{
+	height: 40px;
+	padding: 0;
+	position: 0;
+}
+.navbar-brand {
+	padding: 5px;
+}
+
+.brand img {
+	height: 100px;
+	padding-bottom: 20px;
+}
+
+.container {
+	padding: 0;
+}
+
+h1.brand {
+	color: darkgreen;
+	font-family: 'Lora', serif;
+	font-size: 8em;
+}
+
 .product {
 	width: auto;
 	height: auto;
@@ -35,5 +59,7 @@ body {
 .jumbotron {
 	background-image: url('jumbo.jpg');
 	height: 500px;
-	border-radius: 0;
+	-moz-border-radius: 0px; 
+	-webkit-border-radius: 0px; 
+	border-radius: 0px;
 }

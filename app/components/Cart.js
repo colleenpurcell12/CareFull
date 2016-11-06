@@ -13,19 +13,34 @@ export default class Cart extends Component {
 	render() {
 	console.log("this.props.orderDetails ",this.props.orderDetails )    
 	return (
-	  <div>
+	  <div className='row'>
+
 	    <h2>Items in Your Cart</h2>
 
-	    <ul> {
+	    <table className='table table-hover table-responsive'> 
+	    	<thead>
+	    	<tr>
+	    		<th>Item</th>
+	    		<th>Name</th>
+    			<th>Price</th>
+    			<th>Quantity</th>
+    			<th>Delete</th>
+	    	</tr>
+	    	</thead>
+	    	<tbody>
+	    {
 	      this.props.orderDetails && this.props.orderDetails.map( (item, idx) =>
-	        <li key={idx}> {/*key={item.id}*/}
-	          <span>{item.inventory_quantity}</span>
-	          <span>  {item.name}</span> 
-	          <span>   ${item.price}</span>
-	          <button onClick={() => this.props.deleteItemFromCart(item.product_id)}>Delete</button>
-	        </li>
+	        <tr key={idx}> {/*key={item.id}*/}
+	        	<td>{idx+1}</td>
+	          <td>{item.name}</td> 
+	          <td>${item.price}</td>
+	          <td>{item.quantity}</td>
+	          <td><button onClick={() => this.props.deleteItemFromCart(item.product_id)}>Delete</button></td>
+	        </tr>
 	      )
-	    } </ul>
+	    } 
+	    	</tbody>
+	    </table>
 
 	    <Link to="/checkout" activeClassName="active">Checkout</Link>
 

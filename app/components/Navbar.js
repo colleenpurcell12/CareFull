@@ -19,7 +19,7 @@ export default class Navbar extends Component {
               <span className="icon-bar"></span>
             </button>
             
-              <Link className="navbar-brand" to="/products">CareFull</Link>
+              <Link className="navbar-brand" to="/products"><img src='pumpkin-logo.png'/></Link>
             
           </div>
 
