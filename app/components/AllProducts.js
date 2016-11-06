@@ -16,9 +16,9 @@ export default ({products, filter, handleChange, postItemToCart}) => (
     </div>
 
     <div className="panel col-md-2 ">
-      <div className="panel-heading"><h3>Categories</h3></div>
+      <div className="panel-heading"><h4>Categories</h4></div>
       <div className="panel-body">
-        <p>descriptive text</p>
+        <p>Thousands protested in Hong Kong on Sunday against what they consider a legal overreach by Beijing, with some demonstrators clashing with the police.</p>
 
         <input 
           type='text'
@@ -43,8 +43,12 @@ export default ({products, filter, handleChange, postItemToCart}) => (
               {product.name}
               <img src='sample.jpg'></img>
             </Link>
-            <p>${product.price}</p>
-            <button onClick={ () => postItemToCart(product) } className='btn btn-default'>add to cart</button>
+            <span>${product.price}</span>
+
+            <a onClick={ () => postItemToCart(product) } className="glyphicon glyphicon-plus add-to-cart" aria-hidden="true">
+            </a>
+            <p className="add-to-cart-success">added!</p>
+
           </li>
         )
       } 
