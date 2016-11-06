@@ -1,5 +1,6 @@
 body {
 	padding-top: 50px;
+	font-family: 'consolas', 'monaco', monospace;
 }
 
 .navbar {
@@ -21,6 +22,14 @@ h1.brand {
 	font-size: 8em;
 }
 
+h2, h3, h4, h5 {
+	font-family: 'georgia', serif;
+}
+
+.panel-heading {
+	padding-bottom: 0px;
+}
+
 .product {
 	padding: 20px 15px;
 	width: auto;
@@ -28,10 +37,12 @@ h1.brand {
 	border: 0px solid yellow;
 	position: relative;
 }
+
 .product-name {
 	font-size: 1.5em;
 	color: black;
-	font-family: georgia, serif;
+	font-family: 'georgia', serif;
+	font-weight: normal;
 	display: block;
 }
 
@@ -41,15 +52,19 @@ h1.brand {
 	display: block;
 }
 
+.product .price {
+	font-size: 1.3em;
+	font-weight: bolder;
+}
 
 .add-to-cart {
 	border-radius: 50%;
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
 	text-align: center;
-	padding-top: 17px;
+	padding-top: 14px;
 	background-color: #e1ef92; 
-	color: darkgreen;
+	color: black;
  	position: absolute;
  	top: 30px;
  	right: 20px;
@@ -66,18 +81,11 @@ a.add-to-cart:active {
 	color: transparent;
 }
 
-.add-to-cart-success {
-	border-radius: 50%;
-	height: 50px;
-	width: 50px;
-	text-align: center;
-	text-align: center;
-	padding-top: 17px;
-	background-color: transparent; 
+a.add-to-cart p {
 	color: transparent;
  	position: absolute;
  	top: 30px;
- 	right: 20px;
+ 	right: 0px;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out 0s;
 /*	-webkit-transition: all 0.5s ease;
@@ -85,8 +93,8 @@ a.add-to-cart:active {
 	-o-transition: all 0.5s ease;*/
 }
 
-p.add-to-cart-success:active {
-	top: 0px;
+a.add-to-cart:active p{
+	top: -10px;
 	color: black;
 }
 

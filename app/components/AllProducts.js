@@ -19,21 +19,19 @@ export default ({products, filter, handleChange, postItemToCart}) => (
       <div className="panel-heading"><h4>Categories</h4></div>
       <div className="panel-body">
         <p>Thousands protested in Hong Kong on Sunday against what they consider a legal overreach by Beijing, with some demonstrators clashing with the police.</p>
-
         <input 
           type='text'
           value={filter}
           placeholder='search by name'
           onChange={handleChange}
         />
-
-
+        <p></p>
+      <ul className="list-group">
+        <li className="list-group-item">All Products</li>
+        <li className="list-group-item">Snackboxes</li>
+        <li className="list-group-item">Craftboxes</li>
+      </ul>
     </div>
-    <ul className="list-group">
-      <li className="list-group-item">All Products</li>
-      <li className="list-group-item">Snackboxes</li>
-      <li className="list-group-item">Craftboxes</li>
-    </ul>
   </div>
 
       <ul className='list-unstyled'> {
@@ -43,11 +41,11 @@ export default ({products, filter, handleChange, postItemToCart}) => (
               {product.name}
               <img src='sample.jpg'></img>
             </Link>
-            <span>${product.price}</span>
+            <span className='price'>${product.price}</span>
 
             <a onClick={ () => postItemToCart(product) } className="glyphicon glyphicon-plus add-to-cart" aria-hidden="true">
+              <p className="add-to-cart-success">added!</p>
             </a>
-            <p className="add-to-cart-success">added!</p>
 
           </li>
         )
