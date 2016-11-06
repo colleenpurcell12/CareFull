@@ -11,18 +11,18 @@ export class Login extends Component{
 
         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login/Sign Up<span className="caret"></span></a>
 
-        <ul className='dropdown-menu'>
+        <ul className='login-form dropdown-menu'>
           <li>
             <form onSubmit={evt => {
               evt.preventDefault()
               this.props.login(evt.target.username.value, evt.target.password.value)
             }}>
-            <input name="username" />
-            <input name="password" type="password" />
+            <input name="username" placeholder='username' />
+            <input name="password" type="password" placeholder='password'/>
             <input type="submit" value="Login" />
           </form>
           </li>
-          <li role="separator" className="divider"></li>
+    
           <li>
             <p>New user? Create an account</p>
             <Link to="/signup" activeClassName="active">Sign Up</Link>
@@ -34,7 +34,6 @@ export class Login extends Component{
     )
   }
 } 
-
 
 
 import {login} from 'APP/app/reducers/auth';

@@ -6,11 +6,27 @@ body {
 	width: 100%;
 }
 
+.brand img {
+	height: 100px;
+	padding-bottom: 20px;
+}
+
+.container {
+	padding: 0;
+}
+
+h1.brand {
+	color: darkgreen;
+	font-family: 'Lora', serif;
+	font-size: 8em;
+}
+
 .product {
+	padding: 20px 15px;
 	width: auto;
 	height: auto;
 	border: 0px solid yellow;
-
+	position: relative;
 }
 .product-name {
 	font-size: 1.5em;
@@ -25,6 +41,59 @@ body {
 	display: block;
 }
 
+
+.add-to-cart {
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	padding-top: 17px;
+	background-color: #e1ef92; 
+	color: darkgreen;
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 20px;
+ 	box-shadow: 3px 3px 5px gray;
+ 	transition: top 0.3s ease 0;
+}
+a.add-to-cart:hover {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+	top: 33px;
+}
+a.add-to-cart:active {
+	color: transparent;
+}
+
+.add-to-cart-success {
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	text-align: center;
+	padding-top: 17px;
+	background-color: transparent; 
+	color: transparent;
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out 0s;
+/*	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;*/
+}
+
+p.add-to-cart-success:active {
+	top: 0px;
+	color: black;
+}
+
+.login-form {
+	padding: 20px;
+}
+
 .logout-button {
 	height: 80%;
 	margin: 0;
@@ -35,5 +104,7 @@ body {
 .jumbotron {
 	background-image: url('jumbo.jpg');
 	height: 500px;
-	border-radius: 0;
+	-moz-border-radius: 0px; 
+	-webkit-border-radius: 0px; 
+	border-radius: 0px;
 }
