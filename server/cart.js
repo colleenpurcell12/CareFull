@@ -4,20 +4,40 @@ const Product = require('../db/models/product')
 
 const cart = require('express').Router()
 
+    //CREATE MIDDLEWARE ROUTE TO SET REQ.SESSION.ORDERID with GUEST/USER ORDERID
+    // There are four possible scenarios.
+    // 1) A guest with no session.orderId => create order => set req.session.orderid = orderid => query all products
+    // 2) A user with previous (guest) session.orderId => search for pending order => ""
+    // 3) A guest with a session.orderId => query all products by req.session.orderid
+    // 4) A user with a session.orderId => ""
+
+    .use('/', (req, res, next) => {
+        //case 2 (changes req.session.orderid from guest's order to user's order when logged in)
+        if(req.user) 
+            Order.findOrCreate({
+                where: {status: 'pending', user_id: req.user.id}
+                }
+            ).then(order => {
+                req.session.orderId = order[0].id
+                next()
+            }).catch(next)
+        //case 1
+        else if(!req.session.orderId && !req.user) 
+            Order.create({}).then(createdOrder => {
+                req.session.orderId = createdOrder.id
+                next()
+            }).catch(next)
+        else next()
+    })
+    //case 3,4
     //GET ALL PRODUCTS IN ORDER
-    .get('/', (req, res, next) => {
-        console.log("IN THE CART ROUTE")
+    .get('/', (req, res, next) => 
         OrderProduct.findAll({
             where: {
                 order_id: req.session.orderId
             }
-        })
-        .then(function(allProducts){
-            console.log("IN THE CART ROUTE, allProducts",allProducts)
-            res.send(allProducts)
-        })
-        .catch(next)
-    })  
+        }).then(products => res.send(products)).catch(next)
+    )
 
     //GET ALL PAST ORDERS
     .get('/orderhistory', (req, res, next) =>
@@ -32,48 +52,23 @@ const cart = require('express').Router()
         })
         .catch(next)
     )
-    //ADD ITEM TO CART
-    .post('/', (req, res, next) => {
-        if(req.user) {
-            Order.findOrCreate({
-             where: {status: pending, user_id: req.user.id}
-            })
-            .then(function(foundOrder) {  //req,body is product
-            req.session.orderId = foundOrder[0].id
-            return foundOrder[0].addProduct(req.body, {name: req.body.name, price: req.body.price})
-            })
-            .then(function(order) {
-                res.sendStatus(201)
-            })
-        }
-        else {
-            if(!req.session.orderId) {
-                Order.create({})
-                .then(function(createdOrder) {
-                    req.session.orderId = createdOrder.id
-                    return createdOrder.addProduct(req.body, {name: req.body.name, price: req.body.price})
-                })
-                .then(function(order) {
-                    res.sendStatus(201)
-                })
-            } else {
-                Order.findById(req.session.orderId)
-                .then(function(foundOrder) {
-                    return foundOrder.addProduct(req.body, {name: req.body.name, price: req.body.price})
-                })
-                .then(function(order) {
-                    res.sendStatus(201)
-                })
-            }
-        }
-    })
 
+    //ADD ITEM TO CART
+    .post('/', (req, res, next) => 
+        Order.findById(req.session.orderId)
+        .then(function(foundOrder) {
+            return foundOrder.addProduct(req.body.id, {name: req.body.name, price: req.body.price})
+        })
+        .then(function(order) {
+            res.status(201).send(order)
+        })
+    )
 
     //DELETE ITEM FROM CART
     .delete('/:productId', (req, res, next) =>
-        Order.findById(req.session.orderId)
-        .then(function(foundOrder) {
-            return foundOrder.removeProduct(productId)
+        OrderProduct.destroy({where:{product_id: req.params.productId, order_id: req.session.orderId}})
+        .then(function() {
+            res.sendStatus(200)
         })
     )
 

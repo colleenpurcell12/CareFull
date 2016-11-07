@@ -9,6 +9,7 @@ export default class Navbar extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
+
             <button
               type="button"
               className="navbar-toggle collapsed"
@@ -19,13 +20,16 @@ export default class Navbar extends Component {
               <span className="icon-bar"></span>
             </button>
             
-              <Link className="navbar-brand" to="/products">CareFull</Link>
             
           </div>
 
           <div className="collapse navbar-collapse">
 
             <ul className="nav navbar-nav">
+
+            <li>
+              <Link className="" to="/products">Home</Link>
+            </li>
 
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Boxes <span className="caret"></span></a>
@@ -43,7 +47,7 @@ export default class Navbar extends Component {
               </li>
               <li>
                 <Link to="/cart" activeClassName="active">
-                  <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  
+                  {/*<span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>*/}
                     Cart
                 </Link>
               </li>

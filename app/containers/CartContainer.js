@@ -1,6 +1,6 @@
 import Cart from '../components/Cart';
 import { connect } from 'react-redux';
-import { fetchOrderDetails } from '../action-creators/cart';
+import { fetchOrderDetails, removeItemFromCart } from '../action-creators/cart';
 
 
 const mapDispatchToProps = function (dispatch, ownProps) {
@@ -9,6 +9,9 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     	const allOrderProducts = fetchOrderDetails()
     	console.log("DISPATCH TO PROPS orderDetails ", allOrderProducts)
       dispatch( allOrderProducts ) //doesn't actually take a parameter in func def
+    },
+    deleteItemFromCart(productId) {
+      dispatch(removeItemFromCart(productId))
     }
   }
 }
