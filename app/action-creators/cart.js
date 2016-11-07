@@ -33,4 +33,13 @@ export const removeItemFromCart = productId => dispatch => {
     .catch(err => console.error(`Adding item: ${product} unsuccesful`, err))
 }
 
+//for updating quantity in cart
+const updateItem = updatedProduct => ({type: "UPDATE_QUANTITY_IN_CART", updatedProduct})
+
+export const updateItemFromCart = (product, quantity) => dispatch => {
+  axios.put(`/api/cart/${product.product_id}`, {'quantity': quantity})
+    .then(res => dispatch(updateItem(res.data)))
+             .catch(err => console.error(`Update quantity: ${quantity} unsuccesful`, err))
+
+}
 

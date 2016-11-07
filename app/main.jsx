@@ -15,7 +15,7 @@ import OrderContainer from './containers/OrderContainer'
 
 import Login from './components/Login'
 import Signup from './components/signup'
-//import Cart from './components/cart'
+import AdminDashboard from './components/AdminDashboard'
 
 import Checkout from './components/Checkout'
 
@@ -32,7 +32,7 @@ const Main = connect(
   ({ auth }) => ({ user: auth })
 
 ) (
-  ({ user, children }) => 
+  ({ user, children }) =>
     <div id='main' className="container container-fluid">
       <Navbar loginButton={user ? <WhoAmI/> : <Login/>}/>
       {children}
@@ -56,6 +56,7 @@ render (
         <Route path="cart" component={CartContainer}/>
         <Route path="checkout" component={Checkout} />
         <Route path="order" component={OrderContainer} />
+        <Route path='dashboard' component={AdminDashboard} />
       </Route>
 
     </Router>

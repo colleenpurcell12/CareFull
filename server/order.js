@@ -36,6 +36,8 @@ const orders = require('express').Router()
     //must also change the status
     //look for an example update
     .put('/placeOrder', function(req,res,next){
+        //
+        //console.log('this is what id looks like: ', req.user.id)
         Order.findOne({
             where: {
                 user_id: req.user.id,
@@ -61,12 +63,12 @@ const orders = require('express').Router()
 
     //
     .post('/', function(req,res,next){
-        Product.create(req.body) 
+        Product.create(req.body)
         .then(function(orderCreated){
             res.status(201).send({ orderCreated }) //close res.send promise
         }) //close then promise
         .catch(next)
-        //} 
+        //}
 
     })
     .delete('/:orderId', (req, res, next) =>
@@ -81,6 +83,3 @@ const orders = require('express').Router()
     )
 
 module.exports = orders
-
-
-
