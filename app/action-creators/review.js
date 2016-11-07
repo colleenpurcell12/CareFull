@@ -25,7 +25,6 @@ const postNewReviewAction = (newReview) => ({
 });
 
 export const createNewReview = (review) => {
-  //console.log("HERE IN fetchReview ABOUT TO START ", )
   return dispatch => {
     axios.post('/api/reviews', review)
     .then(function(result) {

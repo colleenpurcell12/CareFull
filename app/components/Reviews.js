@@ -15,6 +15,7 @@ class Reviews extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log("THE STATE OF THE STATE ON SUBMIT", store.getState())
     const review = {
       subject: event.target.subject.value,
       body: event.target.body.value,
