@@ -33,13 +33,13 @@ const orders = require('express').Router()
     .put('/placeOrder', function(req,res,next){
         //
         console.log('this is what id looks like: ', req.user.id)
-        // Order.findOne({
-        //     where: {
-        //         user_id: req.user.id,
-        //         status: 'pending'
-        //     }
-        // })
-        Order.findAll({})
+        Order.findOne({
+            where: {
+                user_id: req.user.id,
+                status: 'pending'
+            }
+        })
+       // Order.findAll({})
         .then(function(foundOrder) {
             console.log(foundOrder)
             foundOrder.update({
