@@ -1,21 +1,48 @@
 body {
 	padding-top: 50px;
+	font-family: 'consolas', 'monaco', monospace;
 }
 
 .navbar {
 	width: 100%;
 }
 
+.brand img {
+	height: 100px;
+	padding-bottom: 20px;
+}
+
+.container {
+	padding: 0;
+}
+
+h1.brand {
+	color: darkgreen;
+	font-family: 'Lora', serif;
+	font-size: 8em;
+}
+
+h2, h3, h4, h5 {
+	font-family: 'georgia', serif;
+}
+
+.panel-heading {
+	padding-bottom: 0px;
+}
+
 .product {
+	padding: 20px 15px;
 	width: auto;
 	height: auto;
 	border: 0px solid yellow;
-
+	position: relative;
 }
+
 .product-name {
 	font-size: 1.5em;
 	color: black;
-	font-family: georgia, serif;
+	font-family: 'georgia', serif;
+	font-weight: normal;
 	display: block;
 }
 
@@ -23,6 +50,56 @@ body {
 	width: 300px;
 	height: auto;
 	display: block;
+}
+
+.product .price {
+	font-size: 1.3em;
+	font-weight: bolder;
+}
+
+.add-to-cart {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	padding-top: 14px;
+	background-color: #e1ef92; 
+	color: black;
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 20px;
+ 	box-shadow: 3px 3px 5px gray;
+ 	transition: top 0.3s ease 0;
+}
+a.add-to-cart:hover {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+	top: 33px;
+}
+a.add-to-cart:active {
+	color: transparent;
+}
+
+a.add-to-cart p {
+	color: transparent;
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 0px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out 0s;
+/*	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;*/
+}
+
+a.add-to-cart:active p{
+	top: -10px;
+	color: black;
+}
+
+.login-form {
+	padding: 20px;
 }
 
 .logout-button {
@@ -35,5 +112,7 @@ body {
 .jumbotron {
 	background-image: url('jumbo.jpg');
 	height: 500px;
-	border-radius: 0;
+	-moz-border-radius: 0px; 
+	-webkit-border-radius: 0px; 
+	border-radius: 0px;
 }
