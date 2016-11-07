@@ -13,7 +13,7 @@ const cart = require('express').Router()
     // 4) A user with a session.orderId => ""
 
     .use('/', (req, res, next) => {
-        console.log('session', req.session)
+       //onsole.log('session', req.session)
         //case 2 (changes req.session.orderid from guest's order to user's order when logged in)
         if(req.user) 
             // if(req.session.orderId) {
@@ -33,7 +33,6 @@ const cart = require('express').Router()
                     //console.log("HAS LENTH")
                     return Promise.map(req.session.orderProducts, (product => {
                         //console.log("product ABOUT TO ADD",product)
-                        console.log('order', order[0])
                         return order[0].addProduct(product.product_id, {name: product.name, price: product.price, quantity: product.quantity})
                         })
                     )
@@ -56,7 +55,6 @@ const cart = require('express').Router()
                     where: {id: req.session.orderId, status: 'pending'}
                 }).then(createdOrder => {
                     //no user, but order ID, so all the data is stored in the model and can be queried
-                    console.log()
                     next()
                 })
         }
@@ -80,7 +78,6 @@ const cart = require('express').Router()
 
             if(!req.user) {
                 if(!req.session.orderProducts) {
-                    console.log("ABOUT TO CLEAR ORDER PRODUCTS")
                     req.session.orderProducts = []; //guest session keeps track of orders so we can roll over when user signs on   
                 } 
                 products.forEach(product => 
@@ -88,7 +85,6 @@ const cart = require('express').Router()
                     req.session.orderProducts.push(product)
                 )
             }
-            console.log("ABOUT TO SEND")
             res.send(products)
         })
         .catch(next)
@@ -129,7 +125,8 @@ const cart = require('express').Router()
     )
 
     ///EDIT quantity in  text input field
-    .put('/:productId', (req, res, next) =>
+    .put('/:productId', (req, res, next) =>  {
+        //console.log("****HIT THE BACK END PUT ROUTE req.body.quantity",req.body)
         OrderProduct.findOne({
             where: {
                 product_id: req.params.productId,
@@ -143,7 +140,7 @@ const cart = require('express').Router()
         }).then(function(updatedProduct) {
             res.sendStatus(202) 
         })
-    )
+    })
 
 
 
