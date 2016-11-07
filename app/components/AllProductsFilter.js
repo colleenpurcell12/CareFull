@@ -20,13 +20,18 @@ export default (FilteredProducts) =>
     render() { 
       const { filter } = this.state;
       const { products } = this.props;
+
+      let filterProducts = products.filter (product => product.name.toLowerCase().match(filter))
+        if(this.props.routeParams && this.props.routeParams.categoryName){
+          filterProducts=filterProducts.filter
+          (product => product.category.includes(this.props.routeParams.categoryName))
+        }
+
       return (
         <div>
           <FilteredProducts 
             products={
-              filter? 
-              products.filter (product => product.name.toLowerCase().match(filter)) 
-              : products
+              filter? filterProducts : products
             }
           filter={filter}
           handleChange={this.handleChange}

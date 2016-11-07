@@ -50,6 +50,7 @@ render (
      <Route path="/" component={Main}>
       <IndexRedirect to="products" />
       <Route path="products" component={AllProductsContainer}/>
+      <Route path="category/:categoryName" />
         <Route path="products/:productId" component={ProductContainer} onEnter={onProductEnter} />
         <Route path="login" component={Login} />
         <Route path="signup" component={Signup}/>
