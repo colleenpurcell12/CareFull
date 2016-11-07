@@ -7,6 +7,7 @@
 
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const OrderProduct = require('./orderProduct')
 
 const Order = db.define('orders', {
 	status: { //returned, shipped, order, or in cart
@@ -45,6 +46,19 @@ const Order = db.define('orders', {
 	    //might add a 5 numbers only validator
 	}
 
+}, {
+	getterMethods: {
+ 		getOrderTotal: function(){
+			var total = 0;
+			OrderProduct.findAll({where: {order_id: this.id}})
+			.then(function(products){
+				for(var order in products){
+					total += order.price
+				}
+				return total;
+			})
+		}
+	}
 })
 
 module.exports = Order
