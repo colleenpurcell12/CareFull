@@ -31,19 +31,17 @@ const orders = require('express').Router()
     //must also change the status
     //look for an example update
     .put('/placeOrder', function(req,res,next){
-        //
         console.log('this is what id looks like: ', req.user.id)
-        // Order.findOne({
-        //     where: {
-        //         user_id: req.user.id,
-        //         status: 'pending'
-        //     }
-        // })
-        Order.findAll({})
+        Order.findOne({
+            where: {
+                user_id: req.user.id,
+                status: 'pending'
+            }
+        })
         .then(function(foundOrder) {
             console.log(foundOrder)
             foundOrder.update({
-                status: 'complete',
+                status: 'completed',
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 address1: req.body.address1,
@@ -68,7 +66,6 @@ const orders = require('express').Router()
         //} 
 
     })
-    //
     .delete('/:orderId', (req, res, next) =>
 
         Order.destroy({

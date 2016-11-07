@@ -46,7 +46,6 @@ function onProductEnter (nextRouterState) {
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-
      <Route path="/" component={Main}>
       <IndexRedirect to="products" />
       <Route path="products" component={AllProductsContainer}/>
@@ -60,7 +59,6 @@ render (
 
     </Router>
   </Provider>
-
   ,
   document.getElementById('app')
 )
