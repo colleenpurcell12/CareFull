@@ -16,7 +16,7 @@ export default class Cart extends Component {
 	  <div className='row'>
 
 	    <h2>Items in Your Cart</h2>
-
+	    <hr/>
 	    <table className='table table-hover table-responsive'> 
 	    	<thead>
 	    	<tr>
@@ -36,7 +36,7 @@ export default class Cart extends Component {
 	          <td>${item.price}</td>
 	          <td>
 	          	<input type='text' value=
-	          	{item.quantity}>
+	          	{item.quantity} onChange={{/*something to update orderProduct quantity*/}}>
 	          	</input>
 	          </td>
 	          <td>

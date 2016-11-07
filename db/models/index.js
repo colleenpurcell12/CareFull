@@ -20,8 +20,5 @@ const OrderProducts = require('./orderProduct.js')
 	Order.belongsToMany(Product, {through: OrderProducts})
 	Review.belongsTo(User, {as: 'author'}) 
 	//adding this to be able to include user name on the product page
-	// User.hasMany(Orders)
-	// Product.belongsToMany(Order)
-	// Order.belongsToMany(Product)
 
 module.exports = { User, Product, Review }

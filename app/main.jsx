@@ -11,6 +11,7 @@ import fetchOneProduct from './action-creators/product';
 import fetchReviews from './action-creators/review';
 
 import CartContainer from './containers/CartContainer'
+import OrderContainer from './containers/OrderContainer'
 
 import Login from './components/Login'
 import Signup from './components/signup'

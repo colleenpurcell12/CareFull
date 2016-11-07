@@ -3,21 +3,15 @@ import { connect } from 'react-redux';
 import { fetchOrderHistory } from '../action-creators/order';
 
 
-const mapDispatchToProps = function (dispatch, ownProps) {
-  return {
-    onLoadOrderHistory () { 
-      dispatch(fetchOrderHistory()) 
-    }
-  }
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onLoadOrderHistory: () => dispatch(fetchOrderHistory())
+})
 
-const mapStateToProps = ({ orderDetails }, ownProps) => {
-  return { orderDetails }; //or { products: state.products }; 
-}
+const mapStateToProps = ({ orderHistory }) => ({ orderHistory })
 
 const OrderContainer = connect(
-						  mapStateToProps,
-						  mapDispatchToProps  
-						)(Order); //component name
+	  mapStateToProps,
+	  mapDispatchToProps  
+	)(Order);
 
 export default OrderContainer;

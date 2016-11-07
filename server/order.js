@@ -4,16 +4,21 @@ const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
-    .get('/', (req, res, next) =>
-        Order.findAll({})
-            .then(orders =>
-                res.send(orders)
-            )
-            .catch(next)
+    .get('/', (req, res, next) => {
+        console.log('req user test', req)
+        Order.findAll({
+            where: { 
+                status: 'completed'
+            }
+        })
+        .then(orders =>
+            res.send(orders)
+        )
+        .catch(next)
+    })
 
-    )
     //GET ONE
-    .get('/:orderID', (req, res, next) =>
+    .get('/:orderID', (req, res, next) => {
         Order.findOne({
         	where: 
         		{
@@ -24,14 +29,13 @@ const orders = require('express').Router()
             res.send(oneOrder)
         )
         .catch(next)
-    )
+    })
 
     //UPDATES THE order model to add oderDetails:
     //the req body is an object with all the keys
     //must also change the status
     //look for an example update
     .put('/placeOrder', function(req,res,next){
-        console.log('this is what id looks like: ', req.user.id)
         Order.findOne({
             where: {
                 user_id: req.user.id,
