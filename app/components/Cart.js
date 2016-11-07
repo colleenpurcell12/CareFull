@@ -29,14 +29,15 @@ export default class Cart extends Component {
 	    	</thead>
 	    	<tbody>
 	    {
-	      this.props.orderDetails && this.props.orderDetails.map( (item, idx) =>
+	      this.props.orderDetails.length && this.props.orderDetails.map( (item, idx) =>
 	        <tr key={idx}> {/*key={item.id}*/}
 	        	<td>{idx+1}</td>
 	          <td>{item.name}</td> 
 	          <td>${item.price}</td>
 	          <td>
-	          	<input type='text' value=
-	          	{item.quantity}>
+	          	<input type='text' 
+	          	value={item.quantity}
+	          	name="quantity">
 	          	</input>
 	          </td>
 	          <td>
