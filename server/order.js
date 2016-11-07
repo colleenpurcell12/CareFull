@@ -18,11 +18,11 @@ const orders = require('express').Router()
     })
 
     //GET ONE
-    .get('/:orderID', function (req, res, next) {
-        Order.findOne({
+    .get('/:orderId', function (req, res, next) {
+        OrderProduct.findAll({
         	where: 
         		{
-        			id: req.params.orderID 
+        			order_id: req.params.orderId
 	        	}
 	        })
         .then(oneOrder =>
