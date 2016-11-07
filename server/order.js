@@ -15,9 +15,9 @@ const orders = require('express').Router()
     //GET ONE
     .get('/:orderID', (req, res, next) =>
         Order.findOne({
-        	where: 
+        	where:
         		{
-        			id: req.params.orderID 
+        			id: req.params.orderID
 	        	}
 	        })
         .then(oneOrder =>
@@ -60,12 +60,12 @@ const orders = require('express').Router()
 
     //
     .post('/', function(req,res,next){
-        Product.create(req.body) 
+        Product.create(req.body)
         .then(function(orderCreated){
             res.status(201).send({ orderCreated }) //close res.send promise
         }) //close then promise
         .catch(next)
-        //} 
+        //}
 
     })
     //
@@ -81,6 +81,3 @@ const orders = require('express').Router()
     )
 
 module.exports = orders
-
-
-
