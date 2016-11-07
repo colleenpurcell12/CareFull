@@ -43,7 +43,6 @@ const orders = require('express').Router()
             }
         })
         .then(function(foundOrder) {
-            console.log(foundOrder)
             foundOrder.update({
                 status: 'completed',
                 first_name: req.body.first_name,

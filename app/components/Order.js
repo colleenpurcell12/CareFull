@@ -57,7 +57,7 @@ export default class Order extends Component {
         		<td>{order.status}</td>
         		<td>{order.updated_at.substring(5,7)}/{order.updated_at.substring(8,10)}/{order.updated_at.substring(0,4)}</td>
         		<td>
-                    <button onClick={() => this.renderOrderDetail(`${order.id}`)}>{ order.first_name}</button>
+                    <button onClick={() => this.renderOrderDetail(`${order.id}`)}>See More...</button>
                 </td>
         	</tr>
         )}
