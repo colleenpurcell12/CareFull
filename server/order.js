@@ -4,21 +4,22 @@ const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
-    .get('/', (req, res, next) => {
-        console.log('req user test', req)
+    .get('/', function (req, res, next) {
         Order.findAll({
             where: { 
+                user_id: req.user.id,
                 status: 'completed'
             }
         })
-        .then(orders =>
+        .then(orders => {
+            console.log('got the orders', orders)
             res.send(orders)
-        )
+        })
         .catch(next)
     })
 
     //GET ONE
-    .get('/:orderID', (req, res, next) => {
+    .get('/:orderID', function (req, res, next) {
         Order.findOne({
         	where: 
         		{

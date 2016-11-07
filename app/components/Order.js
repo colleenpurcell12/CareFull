@@ -12,6 +12,7 @@ export default class Order extends Component {
         <h2>Order History</h2>
         <hr/>
         <table className='table table-hover table-responsive'> 
+
 	    		<thead>
 	    			<tr>
     					<th>Order #</th>
@@ -19,13 +20,15 @@ export default class Order extends Component {
     					<th>Name</th>
 	    			</tr>
 	    		</thead>
+
 	    		<tbody>
         {/* order number, date, total, link to orderdetails*/}
         {this.props.orderHistory && this.props.orderHistory.map(order=>
         	<tr key={order.id}>
         		<td>{order.id}</td>
         		<td>{order.status}</td>
-        		<td>by {order.first_name || 'unregistered user'}</td>
+        	{/*unregistered user appears for testing, but only logged in user should ever appear here*/}
+        		<td>{ order.first_name || 'unregistered user'}</td>
         	</tr>
         )}
         	</tbody>

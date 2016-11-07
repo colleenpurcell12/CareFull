@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { fetchOrderHistory } from '../action-creators/order';
 
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onLoadOrderHistory: () => dispatch(fetchOrderHistory())
+const mapDispatchToProps = (dispatch) => ({
+  onLoadOrderHistory () {
+  	dispatch(fetchOrderHistory())
+  } 
 })
 
 const mapStateToProps = ({ orderHistory }) => ({ orderHistory })
