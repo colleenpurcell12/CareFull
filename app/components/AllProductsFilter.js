@@ -11,7 +11,7 @@ export default (FilteredProducts) =>
     }
     componentDidMount() {
       this.props.onLoadAllProducts(); 
-    }
+  }
     handleChange (evt) {
       const filter = evt.target.value.toLowerCase();
       this.setState({ filter });
