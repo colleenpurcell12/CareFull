@@ -30,8 +30,11 @@ const cartReducer = function(state = [], action) {
       return state.concat(action.orderDetails)
     case 'REMOVE_ITEM_FROM_CART':
       return state.filter(item => item.product_id !== action.productId)
+    case "UPDATE_QUANTITY_IN_CART":
+      return state.map(item => (action.updatedProduct.product_id === item.product_id? action.updatedProduct : item ))
     default: return state
   }
 };
 
 export default cartReducer
+
