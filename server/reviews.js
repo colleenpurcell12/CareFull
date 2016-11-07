@@ -24,6 +24,9 @@ const reviewRouter = require('express').Router()
         .then(function(reviewCreated){
             return reviewCreated.reload({include: [{model: User, as: 'author'}]})
         })
+        .then( function(newReview) {
+          res.send(newReview)
+        })
         .catch(next)
     })
     //DELETE ONE

@@ -11,7 +11,6 @@ class Reviews extends Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.state = {}
   }
 
   handleSubmit(event) {
@@ -25,16 +24,13 @@ class Reviews extends Component {
       product_id: this.props.productId,
     }
     this.props.createNewReview(review)
-    this.state = review
-    console.log('~~~~~THE STATE~~~~', this.state)
   }
 
   render() {
-    console.log("this.props.reviews ",this.props.reviews )  //array
+    console.log("THE STORE STATE ", store.getState  )  //array
     return (
       <div>
         <h4>Product Reviews</h4>
-        {/* //image, caption, price, button add to cart */}
         <ul> {
           this.props.reviews && this.props.reviews.map( (review, idx) =>
             <li key={idx}>
