@@ -17,14 +17,13 @@ const reviewRouter = require('express').Router()
         .catch(next)
 
     )
-    //POST ONE 
+    //POST ONE
     .post('/', function(req,res,next){
 
-        Review.create(req.body) //onSubmit should include productId & userId 
+        Review.create(req.body) //onSubmit should include productId & userId
         .then(function(reviewCreated){
-
-            res.status(201).send({ reviewCreated }) 
-        }) 
+            return reviewCreated.reload({include: [{model: User, as: 'author'}]})
+        })
         .catch(next)
     })
     //DELETE ONE
