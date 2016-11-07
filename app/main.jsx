@@ -54,7 +54,7 @@ render (
         <Route path="signup" component={Signup}/>
         <Route path="cart" component={CartContainer}/>
         <Route path="checkout" component={Checkout} />
-        <Route path="order" component={Order} />
+        <Route path="order" component={OrderContainer} />
       </Route>
 
     </Router>

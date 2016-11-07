@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 
 export default class Cart extends Component {
-	componentDidMount() {
+	componentDidMount () {
 		console.log("DID MOUNTthis.props",this.props)
 	    this.props.onLoadOrderDetails(); 
 	    //take products from back end dispatch method in container, which employs the async action creator fetch, 
