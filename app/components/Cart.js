@@ -3,8 +3,10 @@ import {Link} from 'react-router';
 
 
 export default class Cart extends Component {
-	componentDidMount() {
+
+	componentDidMount () {
 		//console.log("DID MOUNTthis.props",this.props)
+
 	    this.props.onLoadOrderDetails(); 
 	    //take products from back end dispatch method in container, which employs the async action creator fetch, 
 	    //puts it on the state and this makes it a prop
@@ -23,7 +25,7 @@ export default class Cart extends Component {
 	  <div className='row'>
 
 	    <h2>Items in Your Cart</h2>
-
+	    <hr/>
 	    <table className='table table-hover table-responsive'> 
 	    	<thead>
 	    	<tr>
@@ -42,6 +44,7 @@ export default class Cart extends Component {
 	        	<td>{idx+1}</td>
 	          <td>{item.name}</td> 
 	          <td>${item.price}</td>
+
 	          <td>{item.quantity}</td>
 
 	          	<input onKeyPress={(e) => this.handleKeyPress(e,item)}
@@ -49,6 +52,7 @@ export default class Cart extends Component {
 	          	type='text' 
 	          	placeholder={item.quantity}
 	          	name="quantity">
+
 	          	</input>
 	        
 	          <td>

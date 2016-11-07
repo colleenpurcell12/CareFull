@@ -4,27 +4,32 @@ const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
-    .get('/', (req, res, next) =>
-        Order.findAll({})
-            .then(orders =>
-                res.send(orders)
-            )
-            .catch(next)
+    .get('/', function (req, res, next) {
+        Order.findAll({
+            where: { 
+                user_id: req.user.id,
+                status: 'completed'
+            }
+        })
+        .then(orders => {
+            res.send(orders)
+        })
+        .catch(next)
+    })
 
-    )
     //GET ONE
-    .get('/:orderID', (req, res, next) =>
-        Order.findOne({
-        	where:
+    .get('/:orderId', function (req, res, next) {
+        OrderProduct.findAll({
+        	where: 
         		{
-        			id: req.params.orderID
+        			order_id: req.params.orderId
 	        	}
 	        })
         .then(oneOrder =>
             res.send(oneOrder)
         )
         .catch(next)
-    )
+    })
 
     //UPDATES THE order model to add oderDetails:
     //the req body is an object with all the keys
@@ -32,18 +37,16 @@ const orders = require('express').Router()
     //look for an example update
     .put('/placeOrder', function(req,res,next){
         //
-        console.log('this is what id looks like: ', req.user.id)
+        //console.log('this is what id looks like: ', req.user.id)
         Order.findOne({
             where: {
                 user_id: req.user.id,
                 status: 'pending'
             }
         })
-       // Order.findAll({})
         .then(function(foundOrder) {
-            console.log(foundOrder)
             foundOrder.update({
-                status: 'complete',
+                status: 'completed',
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 address1: req.body.address1,
@@ -68,7 +71,6 @@ const orders = require('express').Router()
         //}
 
     })
-    //
     .delete('/:orderId', (req, res, next) =>
 
         Order.destroy({

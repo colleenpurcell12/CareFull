@@ -4,6 +4,7 @@ import productReducer from './product'
 import reviewReducer from './review'
 import cartReducer from './cart'
 import checkoutReducer from './checkout'
+import orderHistoryReducer from './order'
 
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 	products: productsReducer,
 	reviews: reviewReducer,
 	orderDetails: cartReducer,
+	orderHistory: orderHistoryReducer,
 	payment_shipping_details: checkoutReducer
 })
 //UNSURE ABOUT THE LAST TWO

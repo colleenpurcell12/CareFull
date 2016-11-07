@@ -25,7 +25,8 @@ const mapStateToProps = ({ orderDetails }, ownProps) => {
 }
 
 const CartContainer = connect(
-						  mapStateToProps,
-						  mapDispatchToProps  
-						)(Cart); //component name
-export default CartContainer
+	  mapStateToProps,
+	  mapDispatchToProps  
+	)(Cart); 
+
+export default CartContainer;
