@@ -10,7 +10,7 @@ api
   .use('/products', require('./product'))
   .use('/reviews', require('./reviews'))
   .use('/orders', require('./order'))
-    .use('/cart', require('./cart'))
+  .use('/cart', require('./cart'))
 
 
 // Send along any errors

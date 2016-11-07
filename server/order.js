@@ -32,28 +32,30 @@ const orders = require('express').Router()
     //look for an example update
     .put('/placeOrder', function(req,res,next){
         //
-        Order.findOne({
-            where: {
-                user_id: req.user_id,
-                status: 'pending'
-            }
-        })
-        .then(function(currentOrder){ ///FIX CHECK
-            cart.update({
+        console.log('this is what id looks like: ', req.user.id)
+        // Order.findOne({
+        //     where: {
+        //         user_id: req.user.id,
+        //         status: 'pending'
+        //     }
+        // })
+        Order.findAll({})
+        .then(function(foundOrder) {
+            console.log(foundOrder)
+            foundOrder.update({
                 status: 'complete',
-
                 first_name: req.body.first_name,
-                last_name: req.body.first_name,
-                address1: req.body.first_name,
-                address2: req.body.first_name,
-                city: req.body.first_name,
-                state: req.body.first_name,
-                zipcode: req.body.first_name,
-                creditcard:  req.body.first_name
+                last_name: req.body.last_name,
+                address1: req.body.address1,
+                address2: req.body.address2,
+                city: req.body.city,
+                state: req.body.state,
+                zipcode: req.body.zipcode,
+                cc_type: req.body.cc_type,
+                creditcard_number: req.body.creditcard_number
             })
         })
         .catch(next)
-        //DOES THIS RETURN THE OBJECT atfer update, might need to reload
     })
 
     //

@@ -10,7 +10,7 @@ const db = require('APP/db')
 
 const Order = db.define('orders', {
 	status: { //returned, shipped, order, or in cart
-	    type: Sequelize.ENUM('pending', 'completed'),
+	  type: Sequelize.ENUM('pending', 'completed'),
 		defaultValue: 'pending'
 	},
 	//all the new checkout order details like shipment and payment
@@ -43,6 +43,14 @@ const Order = db.define('orders', {
 	    type: Sequelize.TEXT,
 	    allowNull: true
 	    //might add a 5 numbers only validator
+	}, 
+	cc_type: {
+		type: Sequelize.TEXT,
+		allowNull: true
+	},
+	creditcard_number: {
+		type: Sequelize.TEXT,
+		allowNull: true
 	}
 
 })
