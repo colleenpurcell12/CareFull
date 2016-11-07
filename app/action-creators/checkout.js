@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 // const placeOrderAction = (payment_shipping_details) => ({ 
 // 	//where is it on the state? 
@@ -5,11 +6,10 @@
 //   orderDetails 
 // });
 
-const placeOrder = (orderDetails) => {
-  return dispatch => 
-     axios.put('/api/placeOrder', //UNSURE
-     orderDetails     //setting the req.body to be used to update the order 
-     ) 
+const placeOrder = (checkoutData) => {
+  // return dispatch => 
+     axios.put('/api/orders/placeOrder', checkoutData)
+     //setting the req.body to be used to update the order  
      //SEND SOMETHING TO INDICATE SUCESS?
     
      //GO TO ORDER CONFIRM PAGE?
@@ -22,4 +22,4 @@ const placeOrder = (orderDetails) => {
     //   }); 
   }
 
-  export default placeOrder
+export default placeOrder
