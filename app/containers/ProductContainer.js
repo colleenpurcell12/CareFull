@@ -1,22 +1,15 @@
 import Product from '../components/Product';
 import { connect } from 'react-redux';
 import  fetchOneProduct from '../action-creators/product';
+import { addItemToCart } from '../action-creators/cart';
 
 //mapDispatchToProps-->creates onLoadProduct that runs fetchOneProduct
 //the back end fetch is a SQL query that returns the actual instance
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-    // onLoadProduct (currentProduct) {
-    //   dispatch( fetchOneProduct(currentProduct) ) 
-
-    // }
-    // onLoadSingleProduct: function (currentProduct) {
-    // 	this.props.currentProduct = currentProduct
-      //const currentProduct = ownProps.params.currentProduct;
-      //const thunk = fetchOneProduct(currentProduct);
-      //dispatch(thunk);
-      //takes a product, then uses its id in the fetch route
-    // }
+    postItemToCart (product) {
+      dispatch (addItemToCart(product))
+    }
   }
 }
 

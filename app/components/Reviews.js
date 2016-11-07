@@ -44,9 +44,10 @@ class Reviews extends Component {
         <h5>Write a Review</h5>
          <div>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Subject" name="subject" />
-            <input type="text" placeholder="your review here" name="body" />
-            <button>Submit</button>
+            <p><input type="text" placeholder="Subject" name="subject" /></p>
+            <p>
+            <textarea placeholder="your review here" name="body" /></p>
+            <button className= 'btn btn-default'>Submit</button>
           </form>
         </div>
       </div>
