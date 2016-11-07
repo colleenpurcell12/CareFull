@@ -12,7 +12,6 @@ const orders = require('express').Router()
             }
         })
         .then(orders => {
-            console.log('got the orders', orders)
             res.send(orders)
         })
         .catch(next)

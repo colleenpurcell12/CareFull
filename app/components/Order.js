@@ -17,7 +17,8 @@ export default class Order extends Component {
 	    			<tr>
     					<th>Order #</th>
     					<th>Status</th>
-    					<th>Name</th>
+    					<th>Date</th>
+    					<th>Ordered by</th>
 	    			</tr>
 	    		</thead>
 
@@ -27,6 +28,7 @@ export default class Order extends Component {
         	<tr key={order.id}>
         		<td>{order.id}</td>
         		<td>{order.status}</td>
+        		<td>{order.updated_at.slice(0,10)}</td>
         	{/*unregistered user appears for testing, but only logged in user should ever appear here*/}
         		<td>{ order.first_name || 'unregistered user'}</td>
         	</tr>
