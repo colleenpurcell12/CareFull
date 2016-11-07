@@ -3,8 +3,9 @@
 import React, { Component } from 'react';
 import { createNewReview } from '../action-creators/review'
 import {connect} from 'react-redux'
+import store from '../store'
 
-//export default ({ products }) => (  
+//export default ({ products }) => (
 class Reviews extends Component {
 
   constructor(props) {
@@ -14,30 +15,27 @@ class Reviews extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log("THE STATE OF THE STATE ON SUBMIT", store.getState())
     const review = {
       subject: event.target.subject.value,
       body: event.target.body.value,
       rating: 5,
-      author_id: 1,
+      //REVIEW is this best practice?
+      author_id: store.getState().auth.id,
       product_id: this.props.productId,
     }
-    //console.log("ABOUT TO call action creator with review:", review)
     this.props.createNewReview(review)
   }
-  // componentDidMount() {
-  //   console.log("IN PRODUCT COMPONENT ABOUT TO mount ")
-  //   //this.props.onLoadSingleProduct(); //passes the currentProduct to the props
-  // }
-  render() { 
-    console.log("this.props.reviews ",this.props.reviews )  //array  
+
+  render() {
+    console.log("THE STORE STATE ", store.getState  )  //array
     return (
       <div>
         <h4>Product Reviews</h4>
-        {/* //image, caption, price, button add to cart */}
         <ul> {
           this.props.reviews && this.props.reviews.map( (review, idx) =>
-            <li key={idx}> 
-              {review.author.name} says "{review.subject}: {review.body}""
+            <li key={idx}>
+              {review.author.name} says "{review.subject}: {review.body}"
             </li>
           )
         } </ul>

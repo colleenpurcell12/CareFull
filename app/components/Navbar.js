@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
+import store from '../store'
 
 export default class Navbar extends Component {
-  render() { 
+  render() {
     return (
       <div>
       <nav className="navbar navbar-default navbar-fixed-top">
@@ -19,8 +20,8 @@ export default class Navbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            
-            
+
+
           </div>
 
           <div className="collapse navbar-collapse">
@@ -54,7 +55,9 @@ export default class Navbar extends Component {
               <li>
                 <Link to="/order" activeClassName="active">Order History</Link>
               </li>
-            
+
+              {store.getState().auth && store.getState().auth.isAdmin ? <li><Link className="" to="/dashboard">Admin Dashboard</Link></li> : null}
+
               {this.props.loginButton}
 
           </ul>

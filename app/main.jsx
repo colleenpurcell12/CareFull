@@ -11,10 +11,11 @@ import fetchOneProduct from './action-creators/product';
 import fetchReviews from './action-creators/review';
 
 import CartContainer from './containers/CartContainer'
+import OrderContainer from './containers/OrderContainer'
 
 import Login from './components/Login'
 import Signup from './components/signup'
-//import Cart from './components/cart'
+import AdminDashboard from './components/AdminDashboard'
 
 import Checkout from './components/Checkout'
 
@@ -31,7 +32,7 @@ const Main = connect(
   ({ auth }) => ({ user: auth })
 
 ) (
-  ({ user, children }) => 
+  ({ user, children }) =>
     <div id='main' className="container container-fluid">
       <Navbar loginButton={user ? <WhoAmI/> : <Login/>}/>
       {children}
@@ -46,7 +47,6 @@ function onProductEnter (nextRouterState) {
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-
      <Route path="/" component={Main}>
       <IndexRedirect to="products" />
       <Route path="products" component={AllProductsContainer}/>
@@ -55,12 +55,12 @@ render (
         <Route path="signup" component={Signup}/>
         <Route path="cart" component={CartContainer}/>
         <Route path="checkout" component={Checkout} />
-        <Route path="order" component={Order} />
+        <Route path="order" component={OrderContainer} />
+        <Route path='dashboard' component={AdminDashboard} />
       </Route>
 
     </Router>
   </Provider>
-
   ,
   document.getElementById('app')
 )

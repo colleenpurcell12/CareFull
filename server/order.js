@@ -4,27 +4,32 @@ const Product = require('../db/models/product')
 
 const orders = require('express').Router()
 	//GET ALL
-    .get('/', (req, res, next) =>
-        Order.findAll({})
-            .then(orders =>
-                res.send(orders)
-            )
-            .catch(next)
+    .get('/', function (req, res, next) {
+        Order.findAll({
+            where: { 
+                user_id: req.user.id,
+                status: 'completed'
+            }
+        })
+        .then(orders => {
+            res.send(orders)
+        })
+        .catch(next)
+    })
 
-    )
     //GET ONE
-    .get('/:orderID', (req, res, next) =>
-        Order.findOne({
+    .get('/:orderId', function (req, res, next) {
+        OrderProduct.findAll({
         	where: 
         		{
-        			id: req.params.orderID 
+        			order_id: req.params.orderId
 	        	}
 	        })
         .then(oneOrder =>
             res.send(oneOrder)
         )
         .catch(next)
-    )
+    })
 
     //UPDATES THE order model to add oderDetails:
     //the req body is an object with all the keys
@@ -32,41 +37,40 @@ const orders = require('express').Router()
     //look for an example update
     .put('/placeOrder', function(req,res,next){
         //
+        //console.log('this is what id looks like: ', req.user.id)
         Order.findOne({
             where: {
-                user_id: req.user_id,
+                user_id: req.user.id,
                 status: 'pending'
             }
         })
-        .then(function(currentOrder){ ///FIX CHECK
-            cart.update({
-                status: 'complete',
-
+        .then(function(foundOrder) {
+            foundOrder.update({
+                status: 'completed',
                 first_name: req.body.first_name,
-                last_name: req.body.first_name,
-                address1: req.body.first_name,
-                address2: req.body.first_name,
-                city: req.body.first_name,
-                state: req.body.first_name,
-                zipcode: req.body.first_name,
-                creditcard:  req.body.first_name
+                last_name: req.body.last_name,
+                address1: req.body.address1,
+                address2: req.body.address2,
+                city: req.body.city,
+                state: req.body.state,
+                zipcode: req.body.zipcode,
+                cc_type: req.body.cc_type,
+                creditcard_number: req.body.creditcard_number
             })
         })
         .catch(next)
-        //DOES THIS RETURN THE OBJECT atfer update, might need to reload
     })
 
     //
     .post('/', function(req,res,next){
-        Product.create(req.body) 
+        Product.create(req.body)
         .then(function(orderCreated){
             res.status(201).send({ orderCreated }) //close res.send promise
         }) //close then promise
         .catch(next)
-        //} 
+        //}
 
     })
-    //
     .delete('/:orderId', (req, res, next) =>
 
         Order.destroy({
@@ -79,6 +83,3 @@ const orders = require('express').Router()
     )
 
 module.exports = orders
-
-
-

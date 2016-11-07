@@ -24,6 +24,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
           value={filter}
           placeholder='search by name'
           onChange={handleChange}
+          className='search-bar'
         />
         <p></p>
       <ul className="list-group">
