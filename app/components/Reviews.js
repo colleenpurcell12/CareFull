@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import store from '../store'
 import StarRatingComponent from 'react-star-rating-component';
 
-
 //export default ({ products }) => (
 class Reviews extends Component {
 
@@ -14,13 +13,12 @@ class Reviews extends Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
-      rating: 1
+      rating: 0
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("THE STATE OF THE STATE ON SUBMIT", store.getState())
     const review = {
       subject: event.target.subject.value,
       body: event.target.body.value,
@@ -39,7 +37,6 @@ class Reviews extends Component {
   render() {
     let totalStars = 0, totalReviews = 0;
     //setting const to the WriteReview component created at bottom of this file
-    let loggedInReviewView = store.getState().auth ? <WriteReview /> : null
 
     return (
       <div>
@@ -53,7 +50,7 @@ class Reviews extends Component {
 
             return (
               <li key={idx} className='review-body'>
-                <p className='review-stars'>
+                <p id='review-stars'>
                   <StarRatingComponent
                     name="ratings"
                     starCount={5}
@@ -87,42 +84,35 @@ class Reviews extends Component {
 
         </span>
 
-        <small>{totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</small>
+        <span> {totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</span>
 
-        {loggedInReviewView}
-
-      </div>
-    )
-  }
-}
-
-class WriteReview extends Component {
-  render () {
-    return (
-    <div>
-    <h4>Write a Review</h4>
-
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <input type="text" placeholder="Subject" name="subject" />
-          </p>
-          <p>
-            <textarea placeholder="your review here" name="body" />
-          </p>
-          <div className="star-rating">
-            <StarRatingComponent
-              name="rating"
-              value={this.state.rating}
-              onStarClick={this.onStarClick.bind(this)}
-            />
-          </div>
-          <button className= 'btn btn-default'>Submit</button>
-        </form>
+        {store.getState().auth ?
+        <div>
+          <h4>Write a Review</h4>
+            <form onSubmit={this.handleSubmit}>
+              <p>
+                <input type="text" placeholder="Subject" name="subject" />
+              </p>
+              <p>
+                <textarea placeholder="your review here" name="body" />
+              </p>
+              <p className="star-rating">
+                <StarRatingComponent
+                  name="rating"
+                  value={this.state.rating}
+                  onStarClick={this.onStarClick.bind(this)}
+                />
+              </p>
+              <button className= 'btn btn-default'>Submit</button>
+            </form>
+        </div> : null
+        }
 
       </div>
     )
   }
 }
+
 
 const MapDispatch = { createNewReview }
 

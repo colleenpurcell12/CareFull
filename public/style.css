@@ -53,13 +53,20 @@ h2, h3, h4, h5 {
 .product img {
 	width: 300px;
 	height: auto;
-	padding: 2em 0.5em;
+	padding: 2em 0;
 	display: block;
 }
 
+.product-details {
+	margin-top: 64px;
+}
 .product .price {
 	font-size: 1.3em;
 	font-weight: bolder;
+}
+
+p .btn.btn-success.product-add-to-cart {
+	margin: 1em 0;
 }
 
 .add-to-cart {
@@ -131,10 +138,10 @@ img.single-product {
 	font-size: 24px;
 }
 
-.dv-star-rating {
+#review-stars .dv-star-rating.dv-star-rating-non-editable{
 	padding: 0;
 	margin: 0;
-	display: inline;
+	display: inline !important;
 }
 
 .review-body {
