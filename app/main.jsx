@@ -29,14 +29,16 @@ import WhoAmI from './components/WhoAmI'
 
 const Main = connect(
   //mapStateToProps
-  ({ auth }) => ({ user: auth })
+  ({ auth, products }) => ({ user: auth, products: products })
 
 ) (
-  ({ user, children }) =>
+  ({ user, products, children }) => 
     <div id='main' className="container container-fluid">
-      <Navbar loginButton={user ? <WhoAmI/> : <Login/>}/>
+      <Navbar inventory={products} loginButton={user ? <WhoAmI/> : <Login/>}/>
       {children}
     </div>
+    
+  
 )
 
 function onProductEnter (nextRouterState) {

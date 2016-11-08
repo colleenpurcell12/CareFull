@@ -27,7 +27,7 @@ export default class Product extends Component {
         </div>
         <div className='product-details col-md-5'>
 
-          <div className='panel'>
+          <div>
             <h4>What's Inside? </h4>
             <p>{this.props.currentProduct &&this.props.currentProduct.description}</p>
             <p>Price: ${this.props.currentProduct && this.props.currentProduct.price}</p>
