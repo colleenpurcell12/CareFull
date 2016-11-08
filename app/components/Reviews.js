@@ -36,8 +36,6 @@ class Reviews extends Component {
 
   render() {
     let totalStars = 0, totalReviews = 0;
-    //setting const to the WriteReview component created at bottom of this file
-
     return (
       <div>
         <h4>Product Reviews</h4>
