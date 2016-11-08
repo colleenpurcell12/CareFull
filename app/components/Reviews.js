@@ -71,7 +71,7 @@ class Reviews extends Component {
         }
         </ul>
 
-        <span title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
+        <p title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
 
           <StarRatingComponent
             name="average"
@@ -80,9 +80,9 @@ class Reviews extends Component {
             value={totalStars/totalReviews}
           />
 
-        </span>
+        </p>
 
-        <span> {totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</span>
+        <p> {totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</p>
 
         {store.getState().auth ?
         <div>
