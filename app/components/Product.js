@@ -11,8 +11,10 @@ export default class Product extends Component {
         
         <h3>{this.props.currentProduct &&this.props.currentProduct.name}</h3>
 
-        <img src={this.props.currentProduct.photo}>
-        </img>
+        <div id='single-product'>
+          <img src={this.props.currentProduct.photo}></img>
+        </div>
+
         <p></p>
         <p>
           <button className = 'btn btn-success' onClick={ () => this.props.postItemToCart(this.props.currentProduct) }>

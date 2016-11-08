@@ -61,6 +61,12 @@ h2, h3, h4, h5 {
 	font-weight: bolder;
 }
 
+#single-product img {
+	width: 300px;
+	height: auto;
+	display: block;
+}
+
 .add-to-cart {
 	border-radius: 50%;
 	height: 40px;
