@@ -121,3 +121,6 @@ a.add-to-cart:active p{
 	border-radius: 0px;
 }
 
+.star-rating {
+	font-size: 24px;
+}
