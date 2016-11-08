@@ -21,7 +21,7 @@ export default class OrderDetail extends Component {
 						<tr key={idx}>
 							<td>{idx+1}</td>
 							<td>{item.name}</td>
-							<td>{item.price}</td>
+							<td>${item.price}</td>
 							<td>{item.quantity}</td>	
 						</tr>
 						)
