@@ -12,7 +12,7 @@ export const fetchOrderDetails = () =>
   dispatch => 
     axios.get('api/cart') 
       .then(res => {
-      	console.log("IN THE fetchOrderDetails, res is *hopefuly not empty array+++++++++++++++", res)
+      	//console.log("IN THE fetchOrderDetails, res is *hopefuly not empty array+++++++++++++++", res)
       	dispatch(getOrderDetailsAction(res.data))
       })
   

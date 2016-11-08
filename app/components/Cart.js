@@ -20,7 +20,8 @@ export default class Cart extends Component {
 	}
 
 	render() {
-	//console.log("this.props.orderDetails ",this.props.orderDetails )    
+	//console.log("this.props.orderDetails ",this.props.orderDetails )  
+	let totalPrice = 0, totalQuantity = 0;  
 	return (
 	  <div className='row'>
 
@@ -39,7 +40,10 @@ export default class Cart extends Component {
 	    	</thead>
 	    	<tbody>
 	    {
-	      this.props.orderDetails.length && this.props.orderDetails.map( (item, idx) =>
+	      this.props.orderDetails.length && this.props.orderDetails.map( (item, idx) => {
+	      	totalPrice += (item.price * item.quantity);
+	      	totalQuantity += Number(item.quantity);
+	      	return (
 	        <tr key={idx}> {/*key={item.id}*/}
 	        	<td>{idx+1}</td>
 	          <td>{item.name}</td> 
@@ -50,7 +54,6 @@ export default class Cart extends Component {
 	          <td><input onKeyPress={(e) => this.handleKeyPress(e,item)}
 	          	size="3"
 	          	type='text' 
-	          	placeholder={item.quantity}
 	          	name="quantity">
 
 	          </input></td>
@@ -61,13 +64,13 @@ export default class Cart extends Component {
 	 			</button>
 	 		  </td>
 	        </tr>
-	      )
+	      )})
 	    } 
 	    	<tr>
 	    		<td>Total</td>
 	    		<td></td>
-	    		<td>totalPrice</td>
-	    		<td>totalQuantity</td>
+	    		<td>${totalPrice}</td>
+	    		<td>{totalQuantity}</td>
 	    		<td></td>
 	    		<td>
 	    			<Link to="/checkout" className='btn btn-success btn-lrg' activeClassName="active">Checkout</Link>

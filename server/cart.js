@@ -13,7 +13,7 @@ const cart = require('express').Router()
     // 4) A user with a session.orderId => ""
 
     .use('/', (req, res, next) => {
-       //onsole.log('session', req.session)
+        console.log(req.session)
         //case 2 (changes req.session.orderid from guest's order to user's order when logged in)
         if(req.user) 
             // if(req.session.orderId) {
@@ -28,11 +28,8 @@ const cart = require('express').Router()
                 }
             ).then(order => {
                 req.session.orderId = order[0].id
-                //console.log("IF HAS LENGTH req.session.orderProducts.length",req.session.orderProducts.length)
                 if(req.session.orderProducts.length) {
-                    //console.log("HAS LENTH")
                     return Promise.map(req.session.orderProducts, (product => {
-                        //console.log("product ABOUT TO ADD",product)
                         return order[0].addProduct(product.product_id, {name: product.name, price: product.price, quantity: product.quantity})
                         })
                     )
@@ -93,7 +90,8 @@ const cart = require('express').Router()
 
     //ADD ITEM TO CART
     .post('/', (req, res, next) => { 
-        var theFoundOrder;
+        req.session.orderProducts = []
+        var theFoundOrder, newItem;
         Order.findById(req.session.orderId)
         .then(function(foundOrder) { //req.body = product
             theFoundOrder = foundOrder;
@@ -108,10 +106,19 @@ const cart = require('express').Router()
             if(foundProduct) {
                 return foundProduct.increment('quantity', {by: 1})
             }
-            else 
+            else {
+                newItem = true;
                 return theFoundOrder.addProduct(req.body.id, {name: req.body.name, price: req.body.price})
+            }
         })
         .then(function(order) {
+            // console.log(order)
+            // if(!req.user) {
+            //         if(!req.session.orderProducts) {
+            //             req.session.orderProducts = []; //guest session keeps track of orders so we can roll over when user signs on   
+            //         } 
+            //         req.session.orderProducts.push(order[0][0])   
+            //     }
             res.status(201).send(order)
         })
     })
@@ -138,7 +145,7 @@ const cart = require('express').Router()
                 quantity: req.body.quantity
             })
         }).then(function(updatedProduct) {
-            res.sendStatus(202) 
+            res.status(202).send(updatedProduct)
         })
     })
 
