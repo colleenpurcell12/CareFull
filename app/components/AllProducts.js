@@ -7,7 +7,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
     <div className="row jumbotron">
       <h3>Hi! Welcome to</h3>
       <h1 className='brand'>
-        Care<img src='pumpkin-logo.png' />Full&nbsp;
+        Care<img src='/pumpkin-logo.png' />Full&nbsp;
       </h1>
       <h3>~the best in class care packages, curated by our expert style elves~</h3>
       <hr/>
@@ -28,9 +28,9 @@ export default ({products, filter, handleChange, postItemToCart}) => (
         />
         <p></p>
       <ul className="list-group">
-        <li className="list-group-item">All Products</li>
-        <li className="list-group-item">Snackboxes</li>
-        <li className="list-group-item">Craftboxes</li>
+        <li className="list-group-item"><Link to='/products'>All Products</Link></li>
+        <li className="list-group-item"><Link to='/category/snack'>Snackboxes</Link></li>
+        <li className="list-group-item"><Link to='/category/craft'>Craftboxes</Link></li>
       </ul>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
           <li key={idx} className='product col-md-3'> 
             <Link to={`/products/${product.id}`} className='product-name'>
               {product.name}
-              <img src='sample.png'></img>
+              <img src={product.photo}></img>
             </Link>
             <span className='price'>${product.price}</span>
 
