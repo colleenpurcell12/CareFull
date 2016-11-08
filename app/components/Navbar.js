@@ -53,7 +53,7 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/order" activeClassName="active">Order History</Link>
+                {store.getState().auth ? <Link to="/order" activeClassName="active">Order History</Link> : null}
               </li>
 
               {store.getState().auth && store.getState().auth.isAdmin ? <li><Link className="" to="/dashboard">Admin Dashboard</Link></li> : null}
