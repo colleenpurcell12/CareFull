@@ -39,7 +39,7 @@ class Reviews extends Component {
             </li>
           )
         } </ul>
-        <h5>Write a Review</h5>
+        <h4>Write a Review</h4>
          <div>
           <form onSubmit={this.handleSubmit}>
             <p><input type="text" placeholder="Subject" name="subject" /></p>

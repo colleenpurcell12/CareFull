@@ -47,13 +47,13 @@ export default class Cart extends Component {
 
 	          <td>{item.quantity}</td>
 
-	          	<input onKeyPress={(e) => this.handleKeyPress(e,item)}
+	          <td><input onKeyPress={(e) => this.handleKeyPress(e,item)}
 	          	size="3"
 	          	type='text' 
 	          	placeholder={item.quantity}
 	          	name="quantity">
 
-	          	</input>
+	          </input></td>
 	        
 	          <td>
 	          	<button className='btn-default btn' onClick={() => this.props.deleteItemFromCart(item.product_id)}>
