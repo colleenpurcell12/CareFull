@@ -47,26 +47,26 @@ class Reviews extends Component {
             totalStars+=review.rating; totalReviews++;
             return (
               <li key={idx}>
-              {review.author.name} says "{review.subject}: {review.body}" 
-              <StarRatingComponent 
-                name="ratings" 
+              {review.author.name} says "{review.subject}: {review.body}"
+              <StarRatingComponent
+                name="ratings"
                 starCount={5}
                 editing={false}
                 value={review.rating}
               />
               </li>
             )
-          })} 
+          })}
         </ul>
         <span title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
-          <StarRatingComponent 
-            name="average" 
+          <StarRatingComponent
+            name="average"
             starCount={5}
             editing={false}
             value={totalStars/totalReviews}
-          />        
+          />
         </span>
-        <small>{totalReviews} customer reviews</small>
+        <small>{totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</small>
         <h4>Write a Review</h4>
          <div>
           <form onSubmit={this.handleSubmit}>
@@ -74,8 +74,8 @@ class Reviews extends Component {
             <p>
             <textarea placeholder="your review here" name="body" /></p>
             <div className="star-rating">
-              <StarRatingComponent 
-                name="rating" 
+              <StarRatingComponent
+                name="rating"
                 value={this.state.rating}
                 onStarClick={this.onStarClick.bind(this)}
               />
