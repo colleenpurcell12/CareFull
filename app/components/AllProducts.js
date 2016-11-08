@@ -40,7 +40,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
           <li key={idx} className='product col-md-3'> 
             <Link to={`/products/${product.id}`} className='product-name'>
               {product.name}
-              <img src='sample.jpg'></img>
+              <img src='sample.png'></img>
             </Link>
             <span className='price'>${product.price}</span>
 
