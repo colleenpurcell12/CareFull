@@ -40,12 +40,12 @@ const orders = require('express').Router()
         //console.log('this is what id looks like: ', req.user.id)
         Order.findOne({
             where: {
-                user_id: req.user.id,
+                id: req.session.orderId,
                 status: 'pending'
             }
         })
         .then(function(foundOrder) {
-            foundOrder.update({
+            return foundOrder.update({
                 status: 'completed',
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -58,6 +58,7 @@ const orders = require('express').Router()
                 creditcard_number: req.body.creditcard_number
             })
         })
+        .then(updated => res.send(updated))
         .catch(next)
     })
 

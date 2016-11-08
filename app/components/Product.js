@@ -14,6 +14,7 @@ export default class Product extends Component {
     //console.log("CHECK PASSING his.props.reviews ", this.props.reviews )
     return (
       <div className='row'>
+
         <div className='col-md-7'>
         {/*<h2>Product Details</h2>*/}
 

@@ -36,7 +36,6 @@ class Reviews extends Component {
 
   render() {
     let totalStars = 0, totalReviews = 0;
-
     return (
       <div>
         <h4>Product Reviews</h4>
@@ -82,7 +81,6 @@ class Reviews extends Component {
           />
 
         </span>
-<<<<<<< HEAD
 
         <span> {totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</span>
 
@@ -107,28 +105,6 @@ class Reviews extends Component {
             </form>
         </div> : null
         }
-
-=======
-        <small>{totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</small>
-        {store.getState().auth ?
-          <div> <h4>Write a Review</h4>
-                 <div>
-                  <form onSubmit={this.handleSubmit}>
-                    <p><input type="text" placeholder="Subject" name="subject" /></p>
-                    <p>
-                    <textarea placeholder="your review here" name="body" /></p>
-                    <div className="star-rating">
-                      <StarRatingComponent
-                        name="rating"
-                        value={this.state.rating}
-                        onStarClick={this.onStarClick.bind(this)}
-                      />
-                    </div>
-                    <button className= 'btn btn-default'>Submit</button>
-                  </form>
-                </div>
-            </div> : null}
->>>>>>> master
       </div>
     )
   }

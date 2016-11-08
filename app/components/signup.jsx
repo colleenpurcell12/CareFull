@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {Link} from 'react-router';
+
 
 
 class Signup extends Component {
@@ -17,6 +19,7 @@ class Signup extends Component {
 			password: event.target.password.value
 		}
 		this.props.newSignUp(user);
+		//location.assign("/products"); 
 	}
 
 	render() {
@@ -34,11 +37,17 @@ class Signup extends Component {
 	}
 }
 
+import { login } from '../reducers/auth';
+
 export default connect(
 	null, 
 	(dispatch) => ({
 		newSignUp: (user) => {
 			axios.post('/api/users/', user)
+			.then(res => 
+				dispatch(login(res.data.email, res.data.password)))
+			.then(() => location.assign("/products"))
+			.catch(err => console.error("Failed to login user", err))
 		}
 	})
 	)(Signup);
