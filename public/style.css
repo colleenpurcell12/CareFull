@@ -53,13 +53,20 @@ h2, h3, h4, h5 {
 .product img {
 	width: 300px;
 	height: auto;
-	padding: 2em 0.5em;
+	padding: 2em 0;
 	display: block;
 }
 
+.product-details {
+	margin-top: 64px;
+}
 .product .price {
 	font-size: 1.3em;
 	font-weight: bolder;
+}
+
+p .btn.btn-success.product-add-to-cart {
+	margin: 1em 0;
 }
 
 .add-to-cart {
@@ -122,6 +129,26 @@ a.add-to-cart:active p{
 	border-radius: 0px;
 }
 
+img.single-product {
+	padding: 2em;
+	margin: 1em 0;
+}
+
 .star-rating {
 	font-size: 24px;
+}
+
+#review-stars .dv-star-rating.dv-star-rating-non-editable{
+	padding: 0;
+	margin: 0;
+	display: inline !important;
+}
+
+.review-body {
+	width: 50%;
+	height: auto;
+	padding: 1em;
+	background-color: white;
+	border: 1px dotted gray;
+	margin: 1.5em 0;
 }
