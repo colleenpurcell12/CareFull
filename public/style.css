@@ -122,6 +122,26 @@ a.add-to-cart:active p{
 	border-radius: 0px;
 }
 
+img.single-product {
+	padding: 2em;
+	margin: 1em 0;
+}
+
 .star-rating {
 	font-size: 24px;
+}
+
+.dv-star-rating {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.review-body {
+	width: 50%;
+	height: auto;
+	padding: 1em;
+	background-color: white;
+	border: 1px dotted gray;
+	margin: 1.5em 0;
 }

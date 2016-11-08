@@ -44,21 +44,36 @@ class Reviews extends Component {
     return (
       <div>
         <h4>Product Reviews</h4>
-        <ul> {
+
+        <ul className='list-unstyled'> 
+        {
           this.props.reviews && this.props.reviews.map( (review, idx) => {
+
             totalStars+=review.rating; totalReviews++;
+
             return (
-              <li key={idx}>
-              {review.author.name} says "{review.subject}: {review.body}"
-              <StarRatingComponent
-                name="ratings"
-                starCount={5}
-                editing={false}
-                value={review.rating}
-              />
+              <li key={idx} className='review-body'>
+                <p className='review-stars'>
+                  <StarRatingComponent
+                    name="ratings"
+                    starCount={5}
+                    editing={false}
+                    value={review.rating}
+                  />
+                </p>
+                <h4>
+                  {review.author.name}'s Review
+                </h4>
+                <b className='review-subject'>
+                  {review.subject}
+                </b>
+          
+                <p>{review.body}</p>
+
               </li>
-            )
-          })}
+              )
+          })
+        }
         </ul>
 
         <span title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
