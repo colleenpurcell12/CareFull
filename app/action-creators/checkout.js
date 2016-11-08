@@ -9,6 +9,7 @@ import axios from 'axios';
 const placeOrder = (checkoutData) => {
   // return dispatch => 
      axios.put('/api/orders/placeOrder', checkoutData)
+     .then(res => location.assign('/order'))
      //setting the req.body to be used to update the order  
      //SEND SOMETHING TO INDICATE SUCESS?
     
