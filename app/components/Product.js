@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import Reviews from './Reviews'
 
+//export default ({ products }) => (
 export default class Product extends Component {
 
-  render() {    
+  componentDidMount() {
+    console.log("IN PRODUCT COMPONENT ABOUT TO mount ")
+    //this.props.onLoadSingleProduct(); //passes the currentProduct to the props
+
+  }
+  render() {
+    //console.log("this.props.currentProduct ",this.props.currentProduct )
+    //console.log("CHECK PASSING his.props.reviews ", this.props.reviews )
     return (
       <div className='row'>
         <div className='col-md-7'>
         {/*<h2>Product Details</h2>*/}
-        
+
         <h2>{this.props.currentProduct &&this.props.currentProduct.name}</h2>
 
         <img className='single-product' src={this.props.currentProduct.photo}>
