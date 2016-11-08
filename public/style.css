@@ -1,6 +1,7 @@
 body {
 	padding-top: 50px;
 	font-family: 'consolas', 'monaco', monospace;
+	background-image: url('/beige_paper.png');
 }
 
 .navbar {
