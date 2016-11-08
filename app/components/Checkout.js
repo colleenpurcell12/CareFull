@@ -24,7 +24,6 @@ export default class Checkout extends Component {
     //probably goes into the order model table
     placeOrder(checkoutData) //orderDetails
 
-
     //GO TO ORDER CONFIRM PAGE??
   }
 
