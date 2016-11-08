@@ -21,37 +21,43 @@ const seedProducts = () => db.Promise.map([
       name: 'Snack Package',
       description: 'this box is full of delicious snacks and funny movies',
       inventory_quantity: 1,
-      price: 5
+      price: 5,
+      category: ['snack']
     },
     {
       name: 'Puzzle box',
       description: 'this box is full of puzzles of various challenge levels',
       inventory_quantity: 1,
-      price: 15
+      price: 15,
+      category: ['activity']
     },
     {
       name: 'Coloring box',
       description: 'you will delight in the whimsical pictures you can create',
       inventory_quantity: 1,
-      price: 10
+      price: 10,
+      category: ['activity']
     },
     {
       name: 'Kids art box',
       description: 'fun tools to make a creative design',
       inventory_quantity: 1,
-      price: 25
+      price: 25,
+      category: ['craft']
     },
     {
       name: 'Window plant kit',
       description: 'beautiful flowers you can watch grow in your home',
       inventory_quantity: 1,
-      price: 25
+      price: 25,
+      category: ['craft']
     },
     {
       name: 'Munchies box',
       description: 'perfect for snacking during the game',
       inventory_quantity: 1,
-      price: 25
+      price: 25,
+      category: ['snack']
     }
 
 ], product => db.model('products').create(product))

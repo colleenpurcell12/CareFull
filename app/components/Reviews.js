@@ -40,7 +40,7 @@ class Reviews extends Component {
       <div>
         <h4>Product Reviews</h4>
 
-        <ul className='list-unstyled'> 
+        <ul className='list-unstyled'>
         {
           this.props.reviews && this.props.reviews.map( (review, idx) => {
 
@@ -62,7 +62,7 @@ class Reviews extends Component {
                 <b className='review-subject'>
                   {review.subject}
                 </b>
-          
+
                 <p>{review.body}</p>
 
               </li>
@@ -72,7 +72,7 @@ class Reviews extends Component {
         </ul>
 
         <span title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
-          
+
           <StarRatingComponent
             name="average"
             starCount={5}
@@ -105,7 +105,6 @@ class Reviews extends Component {
             </form>
         </div> : null
         }
-
       </div>
     )
   }

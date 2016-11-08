@@ -23,20 +23,26 @@ export default (FilteredProducts) =>
 
     render() { 
       const { filter } = this.state;
-      const { products } = this.props;
-      return (
-        <div>
-          <FilteredProducts 
-            products={
-              filter? 
-              products.filter (product => product.name.toLowerCase().match(filter)) 
-              : products
-            }
-          filter={filter}
-          handleChange={this.handleChange}
-          postItemToCart={this.props.postItemToCart}
-          />
-        </div>
+      console.log("this.props",this.props)
+      let { products } = this.props;
+      if(filter) products = products.filter (product => product.name.toLowerCase().match(filter))
+       if(this.props.routeParams && this.props.routeParams.categoryName){
+        //alert(this.props.routeParams.categoryName)
+         products=products.filter
+         (product => product.category.includes(this.props.routeParams.categoryName))
+       }
+
+     return (
+       <div>
+         <FilteredProducts 
+           products={
+             products
+           }
+         filter={filter}
+         handleChange={this.handleChange}
+         postItemToCart={this.props.postItemToCart}
+         />
+       </div>
       )
     }
 }

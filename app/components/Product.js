@@ -17,7 +17,7 @@ export default class Product extends Component {
 
         <div className='col-md-7'>
         {/*<h2>Product Details</h2>*/}
-        
+
         <h2>{this.props.currentProduct &&this.props.currentProduct.name}</h2>
 
         <img className='single-product' src={this.props.currentProduct.photo}>

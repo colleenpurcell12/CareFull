@@ -51,7 +51,7 @@ console.log('this inventory', this.props.inventory)
               </li>
               <li>
                 <Link to="/cart" activeClassName="active">
-                  {/*<span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>*/}
+                  <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                     Cart
                 </Link>
               </li>
@@ -61,7 +61,7 @@ console.log('this inventory', this.props.inventory)
 
               {store.getState().auth && store.getState().auth.isAdmin ? <li><Link className="" to="/dashboard">Admin Dashboard</Link></li> : null}
 
-              {this.props.loginButton}
+              {this.props.loginButton} 
 
           </ul>
         </div>
