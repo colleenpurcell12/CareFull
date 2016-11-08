@@ -20,7 +20,6 @@ class Reviews extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("THE STATE OF THE STATE ON SUBMIT", store.getState())
     const review = {
       subject: event.target.subject.value,
       body: event.target.body.value,
@@ -38,7 +37,6 @@ class Reviews extends Component {
 
   render() {
     let totalStars = 0, totalReviews = 0;
-    console.log("THE STORE STATE ", store.getState  )  //array
     return (
       <div>
         <h4>Product Reviews</h4>
@@ -47,42 +45,44 @@ class Reviews extends Component {
             totalStars+=review.rating; totalReviews++;
             return (
               <li key={idx}>
-              {review.author.name} says "{review.subject}: {review.body}" 
-              <StarRatingComponent 
-                name="ratings" 
+              {review.author.name} says "{review.subject}: {review.body}"
+              <StarRatingComponent
+                name="ratings"
                 starCount={5}
                 editing={false}
                 value={review.rating}
               />
               </li>
             )
-          })} 
+          })}
         </ul>
         <span title={totalStars/totalReviews + " out of 5 stars"} className="star-rating">
-          <StarRatingComponent 
-            name="average" 
+          <StarRatingComponent
+            name="average"
             starCount={5}
             editing={false}
             value={totalStars/totalReviews}
-          />        
+          />
         </span>
-        <small>{totalReviews} customer reviews</small>
-        <h4>Write a Review</h4>
-         <div>
-          <form onSubmit={this.handleSubmit}>
-            <p><input type="text" placeholder="Subject" name="subject" /></p>
-            <p>
-            <textarea placeholder="your review here" name="body" /></p>
-            <div className="star-rating">
-              <StarRatingComponent 
-                name="rating" 
-                value={this.state.rating}
-                onStarClick={this.onStarClick.bind(this)}
-              />
-            </div>
-            <button className= 'btn btn-default'>Submit</button>
-          </form>
-        </div>
+        <small>{totalReviews} customer {totalReviews === 1 ? 'review' : 'reviews'}</small>
+        {store.getState().auth ?
+          <div> <h4>Write a Review</h4>
+                 <div>
+                  <form onSubmit={this.handleSubmit}>
+                    <p><input type="text" placeholder="Subject" name="subject" /></p>
+                    <p>
+                    <textarea placeholder="your review here" name="body" /></p>
+                    <div className="star-rating">
+                      <StarRatingComponent
+                        name="rating"
+                        value={this.state.rating}
+                        onStarClick={this.onStarClick.bind(this)}
+                      />
+                    </div>
+                    <button className= 'btn btn-default'>Submit</button>
+                  </form>
+                </div>
+            </div> : null}
       </div>
     )
   }
