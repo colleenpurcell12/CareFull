@@ -5,6 +5,7 @@ import store from '../store'
 
 export default class Navbar extends Component {
   render() {
+console.log('this inventory', this.props.inventory)
     return (
       <div>
       <nav className="navbar navbar-default navbar-fixed-top">
@@ -36,11 +37,13 @@ export default class Navbar extends Component {
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Boxes <span className="caret"></span></a>
 
               <ul className="dropdown-menu">
-                <li><a href="#">box type 1</a></li>
-                <li><a href="#">box type 2</a></li>
-                <li><a href="#">box type 3</a></li>
-                <li role="separator" className="divider"></li>
-                <li><a href="#">separated section</a></li>
+
+                {
+                  this.props.inventory.map((item, idx) => 
+                    <li key={idx}><Link to ={`/products/${item.id}`}>{item.name}</Link></li>
+                  )
+                }
+             
               </ul>
             </li>
               <li>
@@ -69,8 +72,3 @@ export default class Navbar extends Component {
   }
 }
 
-
-/* -----------------    CONTAINER     ------------------ */
-
-
-// export default connect(null, null)(Navbar);
