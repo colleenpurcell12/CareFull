@@ -5,7 +5,7 @@ import store from '../store'
 
 export default class Navbar extends Component {
   render() {
-console.log('this inventory', this.props.inventory)
+
     return (
       <div>
       <nav className="navbar navbar-default navbar-fixed-top">

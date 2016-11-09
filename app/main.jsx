@@ -21,6 +21,7 @@ import Checkout from './components/Checkout'
 
 import Order from './components/Order'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 import WhoAmI from './components/WhoAmI'
 
@@ -36,6 +37,7 @@ const Main = connect(
     <div id='main' className=''>
       <Navbar inventory={products} loginButton={user ? <WhoAmI/> : <Login/>}/>
       {children}
+      <Footer />
     </div>
     
   

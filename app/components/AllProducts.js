@@ -5,21 +5,23 @@ export default ({products, filter, handleChange, postItemToCart}) => (
   <div>
 
     <div className="jumbotron">
-      <h3>Hi! Welcome to</h3>
-      <h1 className='brand'>
-        Care<img src='/pumpkin-logo.png' />Full&nbsp;
-      </h1>
-      <h3>~the best in class care packages, curated by our expert style elves~</h3>
-      <hr/>
-      <h2>Get ready for Black Box Friday</h2>
-      <p><a className="btn btn-default" href="#" role="button">Check out these deals!</a></p>
+      <div className='container-fluid'>
+        <h3>Hello, Welcome to</h3>
+        <h1 className='brand'>
+          Care<img src='/pumpkin-logo.png' />Full&nbsp;
+        </h1>
+        <h3>~the best in class care packages, curated by our expert style elves~</h3>
+        <hr/>
+        <h2>Get ready for Black Box Friday</h2>
+        <p><a className="btn btn-default" href="#" role="button">Check out these deals!</a></p>
+      </div>
     </div>
 
     <div className='all-product-container container-fluid'>
     <div className="panel col-md-2 ">
       <div className="panel-heading"><h4>Categories</h4></div>
       <div className="panel-body">
-        <p>Thousands protested in Hong Kong on Sunday against what they consider a legal overreach by Beijing, with some demonstrators clashing with the police.</p>
+        <p>Our boxes are crafted with care. Each package type contains a different mix of carefully selected goods.</p>
         <input 
           type='text'
           value={filter}
@@ -53,6 +55,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
         )
       } 
       </ul>
+
     </div>
   </div>
 )
