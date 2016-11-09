@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 
 export default ({products, filter, handleChange, postItemToCart}) => (
-  <div className='row'>
+  <div>
 
-    <div className="row jumbotron">
+    <div className="jumbotron">
       <h3>Hi! Welcome to</h3>
       <h1 className='brand'>
         Care<img src='/pumpkin-logo.png' />Full&nbsp;
@@ -15,6 +15,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
       <p><a className="btn btn-default" href="#" role="button">Check out these deals!</a></p>
     </div>
 
+    <div className='container container-fluid'>
     <div className="panel col-md-2 ">
       <div className="panel-heading"><h4>Categories</h4></div>
       <div className="panel-body">
@@ -52,7 +53,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
         )
       } 
       </ul>
-    
+    </div>
   </div>
 )
 

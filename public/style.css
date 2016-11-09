@@ -1,5 +1,5 @@
 body {
-	padding-top: 50px;
+/*	padding-top: 50px;*/
 	font-family: 'consolas', 'monaco', monospace;
 }
 
@@ -13,7 +13,9 @@ body {
 }
 
 .container {
-	padding: 0;
+	padding: 0 15%;
+	width: 100%;
+	margin: auto;
 }
 
 h1.brand {
@@ -127,6 +129,7 @@ a.add-to-cart:active p{
 	-moz-border-radius: 0px; 
 	-webkit-border-radius: 0px; 
 	border-radius: 0px;
+	padding: 5% 15%;
 }
 
 img.single-product {
