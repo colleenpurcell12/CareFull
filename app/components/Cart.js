@@ -23,7 +23,7 @@ export default class Cart extends Component {
 	//console.log("this.props.orderDetails ",this.props.orderDetails )  
 	let totalPrice = 0, totalQuantity = 0;  
 	return (
-	  <div className='row'>
+	  <div className='container container-fluid'>
 
 	    <h2>Items in Your Cart</h2>
 	    <hr/>

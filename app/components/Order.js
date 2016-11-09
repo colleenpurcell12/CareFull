@@ -35,7 +35,7 @@ export default class Order extends Component {
     }
 
     return (
-      <div className='row'>
+      <div className='container container-fluid'>
         <h2>Order History</h2>
         <hr/>
         <table className='table table-hover table-responsive'> 

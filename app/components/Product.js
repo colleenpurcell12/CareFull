@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reviews from './Reviews'
+import Footer from './Footer'
 
 //export default ({ products }) => (
 export default class Product extends Component {
@@ -13,7 +14,8 @@ export default class Product extends Component {
     //console.log("this.props.currentProduct ",this.props.currentProduct )
     //console.log("CHECK PASSING his.props.reviews ", this.props.reviews )
     return (
-      <div className='row'>
+      <div>
+      <div className='container container-fluid'>
 
         <div className='col-md-7'>
         {/*<h2>Product Details</h2>*/}
@@ -38,7 +40,8 @@ export default class Product extends Component {
             </p>
           </div>
         </div>
-
+      </div>
+        <Footer />
       </div>
     )
   }

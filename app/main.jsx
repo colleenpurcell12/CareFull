@@ -33,7 +33,7 @@ const Main = connect(
 
 ) (
   ({ user, products, children }) => 
-    <div id='main' className="container container-fluid">
+    <div id='main' className=''>
       <Navbar inventory={products} loginButton={user ? <WhoAmI/> : <Login/>}/>
       {children}
     </div>
