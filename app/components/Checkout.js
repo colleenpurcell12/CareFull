@@ -29,7 +29,7 @@ export default class Checkout extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container container-fluid'>
          <h2>Checkout</h2>
          <hr />
         <form onSubmit={this.handleSubmit}>

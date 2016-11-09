@@ -4,7 +4,7 @@ const seedUsers = () => db.Promise.map([
   {name: 'Joe Biden', email: 'joe@biden.com', password: '1234'},
   {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
   {name: 'Hillary Clinton', email: 'hill@privateserver.com', password: '1234'},
-  {name: 'Michelle Obama', email: 'michelle@whitehouse.gov', password: '1234'},
+  {name: 'Michelle Obama', email: 'michelle@whitehouse.gov', password: '1234', isAdmin: true},
   {name: 'Jon Kerry', email: 'kerry@statedep.gov', password: '1234'}
 ], user => db.model('users').create(user))
 

@@ -24,7 +24,7 @@ class Signup extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='container container-fluid'>
 				<h2>Sign Up</h2>
 				<hr />
 				<form onSubmit={this.handleSubmit}>
