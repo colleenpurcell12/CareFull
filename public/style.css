@@ -13,7 +13,12 @@ body {
 }
 
 .container {
-	padding: 0 15%;
+	padding: 50px 15%;
+	width: 100%;
+	margin: auto;
+}
+.all-product-container {
+	padding: 2em;
 	width: 100%;
 	margin: auto;
 }
@@ -37,7 +42,7 @@ h2, h3, h4, h5 {
 }
 
 .product {
-	padding: 20px 15px;
+	padding: 0 1em;
 	width: auto;
 	height: auto;
 	border: 0px solid yellow;
@@ -135,6 +140,8 @@ a.add-to-cart:active p{
 img.single-product {
 	padding: 2em;
 	margin: 1em 0;
+	width: 100%;
+	height: auto;
 }
 
 .star-rating {

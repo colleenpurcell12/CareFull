@@ -13,7 +13,7 @@ export default class Product extends Component {
     //console.log("this.props.currentProduct ",this.props.currentProduct )
     //console.log("CHECK PASSING his.props.reviews ", this.props.reviews )
     return (
-      <div className='row'>
+      <div className='container container-fluid'>
 
         <div className='col-md-7'>
         {/*<h2>Product Details</h2>*/}

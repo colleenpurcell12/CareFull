@@ -6,7 +6,9 @@ export default class AdminDashboard extends Component {
   }
   render() {
     return (
-      <h1>This is the admin dashboard</h1>
+    	<div className='container container-fluid'>
+      	<h1>This is the admin dashboard</h1>
+      </div>	
     )
   }
 }

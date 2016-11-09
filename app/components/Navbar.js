@@ -9,7 +9,7 @@ console.log('this inventory', this.props.inventory)
     return (
       <div>
       <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
+       
           <div className="navbar-header">
 
             <button
@@ -65,7 +65,7 @@ console.log('this inventory', this.props.inventory)
 
           </ul>
         </div>
-      </div>
+      
     </nav>
     </div>
     )

@@ -15,7 +15,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
       <p><a className="btn btn-default" href="#" role="button">Check out these deals!</a></p>
     </div>
 
-    <div className='container container-fluid'>
+    <div className='all-product-container container-fluid'>
     <div className="panel col-md-2 ">
       <div className="panel-heading"><h4>Categories</h4></div>
       <div className="panel-body">
