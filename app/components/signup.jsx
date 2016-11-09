@@ -54,7 +54,7 @@ export default connect(
 			.then(res => 
 				dispatch(login(res.data.email, res.data.password)))
 			.then(() => location.assign("/products"))
-			.catch(err => console.error("Failed to login user", err))
+			.catch(()=>alert('Error: the email you chose is already registered.'))
 		}
 	})
 	)(Signup);
