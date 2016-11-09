@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Footer extends Component {
   render() {
     return (
-      <div className='footer container-fluid'>
+      <div className='footer container-fluid navbar-static-bottom'>
         <div className='col-md-4'>
           <h4>About</h4><br/>
           CareFull is:<br/>

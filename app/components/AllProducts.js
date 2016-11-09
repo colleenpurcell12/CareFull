@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
+import Footer from './Footer'
 
 export default ({products, filter, handleChange, postItemToCart}) => (
   <div>
@@ -57,6 +58,7 @@ export default ({products, filter, handleChange, postItemToCart}) => (
       </ul>
 
     </div>
+    <Footer />
   </div>
 )
 
